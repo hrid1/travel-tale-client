@@ -1,15 +1,40 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/travel-logo.png";
+import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const handleSubmit = (e) => {
+  const { loginUser, loginWithGoogle } = useAuth();
+  const navigate = useNavigate();
+
+  //   handle login submit
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    // user login
+    try {
+      const result = await loginUser(email, password);
+      console.log(result);
+      toast.success("Login Successful !");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      toast(err?.message);
+    }
+  };
 
-    console.log(email, password);
+  // Google sing In
+  const handleGoogleSignIn = async () => {
+    try {
+      await loginWithGoogle();
+      toast.success("Login Successful!");
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.message);
+    }
   };
   return (
     <div>
@@ -17,7 +42,7 @@ const Login = () => {
         <div className="flex items-center justify-center min-h-[calc(100vh-288px)]">
           <div className="w-full max-w-md m-auto bg-gary-500 rounded p-5 bg-cyan-100/60 my-4 shadow-md">
             <header>
-              <img className="w-20 mx-auto mb-5" src={logo} />
+             <Link to="/"> <img className="w-20 mx-auto mb-5" src={logo} /></Link>
 
               <h1 className="text-center text-2xl font-semibold">
                 Login Your Account
@@ -53,7 +78,7 @@ const Login = () => {
             </form>
             <div className="mb-4 text-center">
               <button
-                // onClick={handleGoogleLogin}
+                onClick={handleGoogleSignIn}
                 className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border rounded-lg shadow-md hover:bg-gray-100"
               >
                 <FcGoogle className="mr-2 text-lg" />

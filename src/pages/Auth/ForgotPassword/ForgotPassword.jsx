@@ -2,14 +2,24 @@ import { BsXLg } from "react-icons/bs";
 import { FaLeftLong } from "react-icons/fa6";
 import { MdLockOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const ForgotPassword = () => {
+  const { resetPassword } = useAuth();
   const handleGetCode = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    console.log(email)
-
-
+    document.getElementById("my_modal").showModal();
+    console.log(email);
+    resetPassword(email)
+      .then((res) => {
+        toast.success("Password Reset Email Sent!");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -50,6 +60,35 @@ const ForgotPassword = () => {
           </button>
         </div>
       </form>
+
+      {/* You can open the modal using document.getElementById('ID').showModal() method */}
+    
+      <dialog id="my_modal" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+
+          <h3 className="font-bold text-lg text-center">Check Your Email</h3>
+          <p className="py-4 text-center">
+            A password reset link has been sent to your email. Click the button
+            below to open Gmail.
+          </p>
+          <div className="flex justify-center">
+            <a
+              href="https://mail.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Open Gmail
+            </a>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };

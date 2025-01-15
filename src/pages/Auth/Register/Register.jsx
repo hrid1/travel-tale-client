@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { uploadImageToBB } from "../../../api/utilis";
+import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const { createUser, updateUserInfo } = useAuth();
   const [error, setError] = useState({});
+  const navigate = useNavigate();
 
   // handle register
   const handleRegister = async (e) => {
@@ -15,8 +19,6 @@ const Register = () => {
     const password = form.password.value;
     const image = form.photo.files[0];
 
-   
-
     // password authentication
     const passRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
     if (!passRegex.test(password)) {
@@ -26,6 +28,20 @@ const Register = () => {
 
     const imageUrl = await uploadImageToBB(image);
     console.log(username, email, password, imageUrl);
+
+    try {
+      // create User
+      const result = await createUser(email, password);
+      // save name and photo
+      await updateUserInfo(username, imageUrl);
+
+      console.log(result);
+      toast.success("Register Successful!");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
   };
 
   // handle showhide passwrod

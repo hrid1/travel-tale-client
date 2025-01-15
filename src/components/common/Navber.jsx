@@ -1,8 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/travel-logo.png";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Navber = () => {
-  const user = false;
+  const { user, logOut } = useAuth();
+
+  const handleLogout = () => {
+    logOut();
+    toast("⚠️ Logout Successful!");
+  };
+
+//   console.log(user?.photoURL)
+
   const navLinks = (
     <>
       <NavLink
@@ -97,25 +107,23 @@ const Navber = () => {
                   <div className="w-10 rounded-full">
                     <img
                       alt="Tailwind CSS Navbar component"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      src={user?.photoURL}
                     />
                   </div>
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w- p-2 shadow space-y-1"
                 >
                   <li>
-                    <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
-                    </a>
+                    <Link className="px-0 py-0.5">Dashboard</Link>
                   </li>
+                  <li className="text-cener">Hi, {user?.displayName}</li>
+                  <li>{user?.email}</li>
                   <li>
-                    <a>Settings</a>
-                  </li>
-                  <li>
-                    <a>Logout</a>
+                    <button onClick={handleLogout} className="btn btn-sm">
+                      Logout
+                    </button>
                   </li>
                 </ul>
               </div>

@@ -1,5 +1,5 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../../assets/travel-logo.png";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
@@ -7,7 +7,8 @@ import toast from "react-hot-toast";
 const Login = () => {
   const { loginUser, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   //   handle login submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const Login = () => {
       const result = await loginUser(email, password);
       console.log(result);
       toast.success("Login Successful !");
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
       toast(err?.message);
@@ -31,6 +32,7 @@ const Login = () => {
     try {
       await loginWithGoogle();
       toast.success("Login Successful!");
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
@@ -42,7 +44,10 @@ const Login = () => {
         <div className="flex items-center justify-center min-h-[calc(100vh-288px)]">
           <div className="w-full max-w-md m-auto bg-gary-500 rounded p-5 bg-cyan-100/60 my-4 shadow-md">
             <header>
-             <Link to="/"> <img className="w-20 mx-auto mb-5" src={logo} /></Link>
+              <Link to="/">
+                {" "}
+                <img className="w-20 mx-auto mb-5" src={logo} />
+              </Link>
 
               <h1 className="text-center text-2xl font-semibold">
                 Login Your Account

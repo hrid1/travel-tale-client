@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -30,9 +31,24 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      setLoading(false)
+      if (currentUser?.email) {
+        try {
+          await axios.post(
+            `${import.meta.env.VITE_API_URL}/user/${currentUser?.email}`,
+            {
+              name: currentUser?.displayName,
+              image: currentUser?.photoURL,
+              email: currentUser?.email,
+            }
+          );
+          // console.log("User update")
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      setLoading(false);
     });
 
     return () => unSubscribe();
@@ -55,12 +71,10 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
-
   const resetPassword = (email) => {
     setLoading(true);
-    return sendPasswordResetEmail(auth, email)
-
-  }
+    return sendPasswordResetEmail(auth, email);
+  };
   //   authentication info
   const authInfo = {
     createUser,
@@ -70,7 +84,7 @@ const AuthProvider = ({ children }) => {
     loading,
     updateUserInfo,
     loginWithGoogle,
-    resetPassword
+    resetPassword,
   };
 
   return (

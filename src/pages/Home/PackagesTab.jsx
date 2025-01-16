@@ -10,7 +10,7 @@ const PackagesTab = () => {
     queryKey: ["package"],
     queryFn: async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/packages?limit=true"
+        `${import.meta.env.VITE_API_URL}/packages?limit=true`
       );
       return data;
     },

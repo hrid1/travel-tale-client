@@ -11,7 +11,7 @@ const Navber = () => {
     toast("⚠️ Logout Successful!");
   };
 
-//   console.log(user?.photoURL)
+  // console.log(user?.photoURL)
 
   const navLinks = (
     <>
@@ -106,7 +106,7 @@ const Navber = () => {
                 >
                   <div className="w-10 rounded-full">
                     <img
-                      alt="Tailwind CSS Navbar component"
+                      alt="User Profile"
                       src={user?.photoURL}
                     />
                   </div>
@@ -116,7 +116,7 @@ const Navber = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w- p-2 shadow space-y-1"
                 >
                   <li>
-                    <Link className="px-0 py-0.5">Dashboard</Link>
+                    <Link to="/dashboard" className="px-0 py-0.5">Dashboard</Link>
                   </li>
                   <li className="text-cener">Hi, {user?.displayName}</li>
                   <li>{user?.email}</li>

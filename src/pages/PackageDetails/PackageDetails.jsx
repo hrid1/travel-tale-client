@@ -1,8 +1,10 @@
-import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const PackageDetails = () => {
   const packageData = useLoaderData();
@@ -17,18 +19,27 @@ const PackageDetails = () => {
   const [tourDate, setTourDate] = useState(new Date());
   const [selectedGuide, setSelectedGuide] = useState("");
 
-//   const formatedDate = tourDate.toISOString() ;
-  const handleSubmit = (e) => {
+  //   const formatedDate = tourDate.toISOString() ;
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const bookingDetails = {
       package: packageData?.tripTitle,
       price: packageData?.price,
-      torist: user?.displayName,
+      tourist: user?.displayName,
       toristEmail: user?.email,
       date: tourDate.toISOString(),
       guideInfo: selectedGuide,
+      status: "Pending"
     };
     console.table(bookingDetails);
+    // console.log(e.target.guide.value);
+    // send to the server
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/booking`, bookingDetails);
+      toast.success("Booking Successful!");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -36,49 +47,40 @@ const PackageDetails = () => {
       <h2 className="text-center text-2xl my-3 font-semibold">
         Package Details
       </h2>
-      {/* pkg detail */}
-      <section className="max-w-5xl mx-auto p-6 bg-white shadow-md rounded-lg">
-        {/* Image */}
+      {/* pkg details */}
+      {/* <section className="max-w-5xl mx-auto p-6 bg-white shadow-md rounded-lg">
         <img
           src={packageData.image}
           alt={packageData.tripTitle}
           className="w-full h-64 object-cover rounded-md"
         />
 
-        {/* Content */}
         <div className="mt-6">
-          {/* Tour Type */}
           <p className="text-teal-500 uppercase text-sm font-bold">
             {packageData.tourType}
           </p>
 
-          {/* Trip Title */}
           <h1 className="text-2xl font-bold text-gray-800 mt-2">
             {packageData.tripTitle}
           </h1>
 
-          {/* Price */}
           <p className="text-lg text-gray-700 font-semibold mt-4">
             Price: <span className="text-blue-500">{packageData?.price}</span>
           </p>
 
-          {/* About */}
           <div className="mt-6">
             <h2 className="text-xl font-semibold text-gray-800">About</h2>
             <p className="text-gray-600 mt-2">{packageData?.about}</p>
           </div>
 
-          {/* Tour Plan */}
           <div className="mt-6">
             <h2 className="text-xl font-semibold text-gray-800">Tour Plan</h2>
             <p className="text-gray-600 mt-2 whitespace-pre-wrap">
               {packageData?.tourPlan}
             </p>
           </div>
-
-          {/* Back Button */}
         </div>
-      </section>
+      </section> */}
       {/* guide info */}
 
       <section></section>
@@ -110,7 +112,7 @@ const PackageDetails = () => {
                 <input
                   type="text"
                   id="touristName"
-                  value={user?.displayName}
+                  value={user?.displayName || ""}
                   readOnly
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                 />
@@ -126,7 +128,7 @@ const PackageDetails = () => {
                 <input
                   type="email"
                   id="touristEmail"
-                  value={user?.email}
+                  value={user?.email || ""}
                   readOnly
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                 />
@@ -160,7 +162,7 @@ const PackageDetails = () => {
                 <input
                   type="text"
                   id="price"
-                  value={packageData.price}
+                  value={packageData.price || ""}
                   readOnly
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                 />
@@ -178,11 +180,13 @@ const PackageDetails = () => {
                 </label>
                 <select
                   id="guide"
+                  name="guide"
                   value={selectedGuide}
                   onChange={(e) => setSelectedGuide(e.target.value)}
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                 >
                   <option value="">Select a Guide</option>
+
                   {guides.map((guide) => (
                     <option key={guide.id} value={guide.name}>
                       {guide.name}
@@ -205,8 +209,6 @@ const PackageDetails = () => {
                 />
               </div>
             </div>
-
-            {/*  */}
 
             {/* Book Now Button */}
             <div className="mb-4">

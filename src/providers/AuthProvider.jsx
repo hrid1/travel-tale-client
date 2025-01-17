@@ -33,26 +33,24 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      // if (currentUser?.email) {
-      //   try {
-      //     await axios.post(
-      //       `${import.meta.env.VITE_API_URL}/user/${currentUser?.email}`,
-      //       {
-      //         name: currentUser?.displayName,
-      //         image: currentUser?.photoURL,
-      //         email: currentUser?.email,
-      //       }
-      //     );
-      //     // console.log("User update")
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // }
+      if (currentUser?.email) {
+        // get token and store client
+        const userInfo = currentUser.email;
+        axios.post("http://localhost:5000/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+          console.log(res.data);
+        });
+      } else {
+        // remove token
+        localStorage.removeItem("access-token");
+      }
       setLoading(false);
     });
 
     return () => unSubscribe();
-  });
+  }, []);
 
   const logOut = () => {
     setLoading(true);

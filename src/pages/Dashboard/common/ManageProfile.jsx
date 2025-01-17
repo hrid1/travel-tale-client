@@ -10,7 +10,8 @@ const ManageProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user, loading } = useAuth();
   const [role] = useRole();
-  
+ 
+
   const handleEditClick = () => {
     setIsModalOpen(true);
   };
@@ -33,8 +34,8 @@ const ManageProfile = () => {
       </h1>
 
       {/* User Info Card */}
-           {/* User Info Card */}
-           <div className="bg-gradient-to-r from-gray-100 via-white to-gray-100 shadow-lg rounded-xl p-8 mt-8 w-4/5 md:w-[460px]">
+      {/* User Info Card */}
+      <div className="bg-gradient-to-r from-gray-100 via-white to-gray-100 shadow-lg rounded-xl p-8 mt-8 w-4/5 md:w-[460px]">
         <div className="flex flex-col items-center">
           <img
             src={user?.photoURL}
@@ -56,14 +57,15 @@ const ManageProfile = () => {
         >
           <FaEdit className="text-lg" /> Edit Profile
         </button>
-        <button
-          onClick={handleApplyAsGuide}
-          className="mt-5 bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 w-full shadow-md"
-        >
-          Apply For Tour Guide
-        </button>
+        {role === "tourist" && (
+          <button
+            onClick={handleApplyAsGuide}
+            className="mt-5 bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 w-full shadow-md"
+          >
+            Apply For Tour Guide
+          </button>
+        )}
       </div>
-
 
       {/* Modal */}
       {isModalOpen && (

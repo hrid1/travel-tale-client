@@ -3,6 +3,7 @@ import { MdCheckCircle, MdCancel } from "react-icons/md";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Spiner from "../../../components/Spiner";
+import toast from "react-hot-toast";
 
 const ManageCandidate = () => {
   //   const [, setCandidates] = useState([]);
@@ -70,7 +71,8 @@ const ManageCandidate = () => {
           status: "Accepted",
         }
       );
-      console.log(data);
+      //   console.log(data);
+      toast("👍 Request Accepted!");
       refetch();
     } catch (err) {
       console.log(err);
@@ -87,6 +89,7 @@ const ManageCandidate = () => {
         }
       );
       console.log(data);
+      toast("👎 Requested Rejected!");
       refetch();
     } catch (err) {
       console.log(err);

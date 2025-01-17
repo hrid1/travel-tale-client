@@ -13,6 +13,7 @@ import ManageProfile from "../pages/Dashboard/common/ManageProfile";
 import MyBookings from "../pages/Dashboard/Tourist/MyBookings";
 import JoinAsTourGuide from "../pages/Dashboard/Tourist/JoinAsGuide";
 import ManageCandidate from "../pages/Dashboard/Admin/ManageCandidate";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -106,7 +107,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "manage-users",
-        element: <h3> Manage Users </h3>,
+        element: <ManageUsers />,
       },
       {
         path: "manage-candidates",

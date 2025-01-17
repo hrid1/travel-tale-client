@@ -23,7 +23,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold  underline text-cyan-500  rounded-sm p-2"
+            ? "font-bold  underline text-sky-600  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/"
@@ -33,7 +33,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-cyan-500  rounded-sm p-2"
+            ? "font-bold underline text-sky-600  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/community"
@@ -43,7 +43,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-cyan-500 0  rounded-sm p-2"
+            ? "font-bold underline text-sky-600 0  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/about"
@@ -53,7 +53,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-cyan-500 0  rounded-sm p-2"
+            ? "font-bold underline text-sky-600 0  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/trips"
@@ -89,26 +89,26 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="min-h-screen bg-blue-100 w-60   flex flex-col justify-between">
+          <div className="min-h-screen bg-sky-600 w-60  text-white  flex flex-col justify-between">
             {/* logo & name */}
             <div className="h-14">
               logo
               <label
                 htmlFor="my-drawer-2"
-                className="font-bold rounded drawer-button md:hidden right-0 btn btn-sm  absolute bg-blue-600 hover:bg-red-600 text-white"
+                className="font-bold rounded drawer-button md:hidden right-0 btn btn-sm  absolute bg-sky-600 hover:bg-red-600 text-white"
               >
                 X
               </label>
             </div>
 
             {/*Sidebar Menu Items  */}
-            <div className="flex-1 bg-base-200">
+            <div className="flex-1 text-white ">
               {role === "admin" && <AdminMenu />}
               {role === "tourist" && <TouristMenu />}
               {role === "guide" && <GuideMenu />}
             </div>
             {/* Common Menu */}
-            <div className="h-60 bg-base-200">{navLinks}</div>
+            <div className="h-60 ">{navLinks}</div>
           </div>
         </div>
       </div>

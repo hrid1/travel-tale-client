@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { uploadImageToBB } from "../../../api/utilis";
+import { saveUser, uploadImageToBB } from "../../../api/utilis";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 
@@ -34,8 +34,10 @@ const Register = () => {
       const result = await createUser(email, password);
       // save name and photo
       await updateUserInfo(username, imageUrl);
-
+      // const userInfo = { name: username, email: email, image: imageUrl };
       console.log(result);
+      await saveUser(result?.user);
+
       toast.success("Register Successful!");
       navigate("/");
     } catch (err) {

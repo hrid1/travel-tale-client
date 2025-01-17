@@ -8,8 +8,10 @@ import Community from "../pages/Coummunity/Community";
 import PrivateRoute from "./PrivateRoute";
 import PackageDetails from "../pages/PackageDetails/PackageDetails";
 import Dashboard from "../layouts/Dashboard";
-import Profile from "../components/dashboard/Profile";
 import AdminRoute from "./AdminRoute";
+import ManageProfile from "../pages/Dashboard/common/ManageProfile";
+import MyBookings from "../pages/Dashboard/Tourist/MyBookings";
+import JoinAsTourGuide from "../pages/Dashboard/Tourist/JoinAsGuide";
 
 export const router = createBrowserRouter([
   {
@@ -20,10 +22,6 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        children: [
-          { path: "/", element: <h2>Tour</h2> },
-          { path: "/guide", element: <>Guird</> },
-        ],
       },
       {
         path: "package/:id",
@@ -63,12 +61,12 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Profile />,
+        element: <ManageProfile />,
       },
       // for tourist
       {
         path: "my-bookings",
-        element: <h2>My bookings</h2>,
+        element: <MyBookings />,
       },
       {
         path: "tourist-manage-stories",
@@ -80,7 +78,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "join-guide",
-        element: <h3>Join as tour guide</h3>,
+        element: <JoinAsTourGuide/>,
       },
       // for guide
       {

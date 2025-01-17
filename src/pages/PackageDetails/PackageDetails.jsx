@@ -29,13 +29,16 @@ const PackageDetails = () => {
       toristEmail: user?.email,
       date: tourDate.toISOString(),
       guideInfo: selectedGuide,
-      status: "Pending"
+      status: "Pending",
     };
     console.table(bookingDetails);
     // console.log(e.target.guide.value);
     // send to the server
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/booking`, bookingDetails);
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/booking`,
+        bookingDetails
+      );
       toast.success("Booking Successful!");
     } catch (err) {
       console.log(err);
@@ -163,7 +166,6 @@ const PackageDetails = () => {
                   type="text"
                   id="price"
                   value={packageData.price || ""}
-                  readOnly
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                 />
               </div>

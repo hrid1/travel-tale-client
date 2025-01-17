@@ -33,21 +33,21 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      if (currentUser?.email) {
-        try {
-          await axios.post(
-            `${import.meta.env.VITE_API_URL}/user/${currentUser?.email}`,
-            {
-              name: currentUser?.displayName,
-              image: currentUser?.photoURL,
-              email: currentUser?.email,
-            }
-          );
-          // console.log("User update")
-        } catch (error) {
-          console.log(error);
-        }
-      }
+      // if (currentUser?.email) {
+      //   try {
+      //     await axios.post(
+      //       `${import.meta.env.VITE_API_URL}/user/${currentUser?.email}`,
+      //       {
+      //         name: currentUser?.displayName,
+      //         image: currentUser?.photoURL,
+      //         email: currentUser?.email,
+      //       }
+      //     );
+      //     // console.log("User update")
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // }
       setLoading(false);
     });
 

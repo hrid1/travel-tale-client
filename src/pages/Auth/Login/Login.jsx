@@ -3,6 +3,7 @@ import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../../assets/travel-logo.png";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { saveUser } from "../../../api/utilis";
 
 const Login = () => {
   const { loginUser, loginWithGoogle } = useAuth();
@@ -30,7 +31,9 @@ const Login = () => {
   // Google sing In
   const handleGoogleSignIn = async () => {
     try {
-      await loginWithGoogle();
+      const data = await loginWithGoogle();
+      // save user in DB
+      await saveUser(data?.user);
       toast.success("Login Successful!");
       navigate(from, { replace: true });
     } catch (err) {

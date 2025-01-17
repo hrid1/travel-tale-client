@@ -12,6 +12,7 @@ import AdminRoute from "./AdminRoute";
 import ManageProfile from "../pages/Dashboard/common/ManageProfile";
 import MyBookings from "../pages/Dashboard/Tourist/MyBookings";
 import JoinAsTourGuide from "../pages/Dashboard/Tourist/JoinAsGuide";
+import ManageCandidate from "../pages/Dashboard/Admin/ManageCandidate";
 
 export const router = createBrowserRouter([
   {
@@ -78,7 +79,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "join-guide",
-        element: <JoinAsTourGuide/>,
+        element: <JoinAsTourGuide />,
       },
       // for guide
       {
@@ -109,7 +110,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "manage-candidates",
-        element: <h3> Manage Candidates </h3>,
+        element: <ManageCandidate />,
       },
       // for guide
     ],

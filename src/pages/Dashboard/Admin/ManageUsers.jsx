@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Spiner from "../../../components/Spiner";
 
 const ManageUsers = () => {
   const [search, setSearch] = useState("");
@@ -10,21 +11,27 @@ const ManageUsers = () => {
   // Load users data from the backend
   const axiosSecure = useAxiosSecure();
   const { data: users = [], isLoading } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users", search, roleFilter],
     queryFn: async () => {
-      const { data } = await axiosSecure("/allusers");
+      const { data } = await axiosSecure(
+        `/allusers?search=${search}&filter=${roleFilter}`
+      );
       return data;
     },
   });
+  console.log(roleFilter);
+  // // Filtered users based on search and role
+  // const filteredUsers = users.filter((user) => {
+  //   const matchesSearch = user.name
+  //     .toLowerCase()
+  //     .includes(search.toLowerCase());
+  //   const matchesRole = roleFilter ? user.role === roleFilter : true;
+  //   return matchesSearch && matchesRole;
+  // });
 
-  // Filtered users based on search and role
-  const filteredUsers = users.filter((user) => {
-    const matchesSearch = user.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-    const matchesRole = roleFilter ? user.role === roleFilter : true;
-    return matchesSearch && matchesRole;
-  });
+  
+
+  // if (isLoading) return <Spiner />;
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
@@ -50,9 +57,9 @@ const ManageUsers = () => {
           onChange={(e) => setRoleFilter(e.target.value)}
         >
           <option value="">All Roles</option>
-          <option value="User">User</option>
-          <option value="Tour Guide">Tour Guide</option>
-          <option value="Admin">Admin</option>
+          <option value="tourist">Tourist</option>
+          <option value="guide">Tour Guide</option>
+          <option value="admin">Admin</option>
         </select>
       </div>
 
@@ -69,8 +76,8 @@ const ManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.length > 0 ? (
-              filteredUsers.map((user, index) => (
+            {users.length > 0 ? (
+              users.map((user, index) => (
                 <tr key={user._id} className="text-center">
                   <td className="py-2 px-4">{index + 1}</td>
                   <td className="py-2 px-4">
@@ -89,7 +96,10 @@ const ManageUsers = () => {
               <tr>
                 <td colSpan="5" className="py-4 text-center text-gray-500">
                   No users found.
+
+                  {isLoading && <Spiner />}
                 </td>
+             
               </tr>
             )}
           </tbody>

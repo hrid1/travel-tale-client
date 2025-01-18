@@ -4,51 +4,12 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Spiner from "../../../components/Spiner";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { TbFileCv } from "react-icons/tb";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ManageCandidate = () => {
-  //   const [, setCandidates] = useState([]);
-
-  //   // Fetch candidates from the backend
-  //   useEffect(() => {
-  //     const fetchCandidates = async () => {
-  //       try {
-  //         const response = await axios.get("/api/candidates"); // Replace with your API endpoint
-  //         setCandidates(response.data);
-  //       } catch (error) {
-  //         console.error("Error fetching candidates:", error);
-  //       }
-  //     };
-  //     fetchCandidates();
-  //   }, []);
-
-  //   // Handle accept action
-  //   const handleAccept = async (candidateId) => {
-  //     try {
-  //       await axios.post(`/api/candidates/${candidateId}/accept`); // Replace with your API endpoint
-  //       setCandidates((prev) =>
-  //         prev.filter((candidate) => candidate._id !== candidateId)
-  //       );
-  //       alert("Candidate accepted and promoted to tour-guide role.");
-  //     } catch (error) {
-  //       console.error("Error accepting candidate:", error);
-  //       alert("Failed to accept candidate.");
-  //     }
-  //   };
-
-  //   // Handle reject action
-  //   const handleReject = async (candidateId) => {
-  //     try {
-  //       await axios.delete(`/api/candidates/${candidateId}`); // Replace with your API endpoint
-  //       setCandidates((prev) =>
-  //         prev.filter((candidate) => candidate._id !== candidateId)
-  //       );
-  //       alert("Candidate rejected and application deleted.");
-  //     } catch (error) {
-  //       console.error("Error rejecting candidate:", error);
-  //       alert("Failed to reject candidate.");
-  //     }
-  //   };
-
+ 
   //   load all candidates
   const {
     data: candidates = [],
@@ -110,7 +71,7 @@ const ManageCandidate = () => {
               <th className="py-2 px-4">Name</th>
               <th className="py-2 px-4">Role</th>
               <th className="py-2 px-4">Application Title</th>
-              <th className="py-2 px-4">CV</th>
+              <th className="py-2 px-4">CV Link</th>
               <th className="py-2 px-4">Actions</th>
             </tr>
           </thead>
@@ -120,23 +81,33 @@ const ManageCandidate = () => {
                 <tr key={candidate._id} className="">
                   <td className="py-2 px-4">{index + 1}</td>
                   <td className="py-2 px-4">{candidate.name}</td>
-                  <td className="py-2 px-4">{candidate.role || "Tourist"}</td>
+                  <td className="py-2 px-4 capitalize">
+                    {candidate.role || "Tourist"}
+                  </td>
                   <td className="py-2 px-4">{candidate.info.title}</td>
-                  <td className="py-2 px-4">{candidate.info.cvLink}</td>
-                  <td className="py-2 px-4 flex ">
+                  <td className="py-2 px-4">
+                    <Link
+                      to={candidate.info.cvLink}
+                      className="flex gap-1 items-center "
+                    >
+                      <FaExternalLinkAlt />
+                      <span>Click Here</span>
+                    </Link>
+                  </td>
+                  <td className="py-2 px-4 flex gap-1.5">
                     <button
                       className="btn btn-sm bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center "
                       onClick={() => handleAccept(candidate._id)}
                     >
                       <MdCheckCircle />
-                      <span>Accept</span>
+                      {/* <span>Accept</span> */}
                     </button>
                     <button
                       className="btn btn-sm bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center "
                       onClick={() => handleReject(candidate._id)}
                     >
                       <MdCancel />
-                      <span>Reject</span>
+                      {/* <span>Reject</span> */}
                     </button>
                   </td>
                 </tr>

@@ -5,13 +5,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Gallery } from "react-grid-gallery";
+import ImageGallery from "../../components/ImageGalary";
+import TourPlan from "../../components/dashboard/TourPlan";
+import GuideSection from "./GuideSection";
 
 const PackageDetails = () => {
   const packageData = useLoaderData();
-  const id = useParams();
   const { user } = useAuth();
 
-  console.log(id, packageData);
+  console.log(packageData);
   const guides = [
     { id: 1, name: "Rafi" },
     { id: 2, name: "Safi" },
@@ -53,11 +56,12 @@ const PackageDetails = () => {
         Package Details
       </h2>
       {/* img galary */}
-      <section>
-        
+
+      <section className="mx-auto max-w-6xl">
+        <ImageGallery imageUrls={packageData?.images} />
       </section>
       {/* pkg details */}
-      <section className="max-w-5xl mx-auto p-6 bg-orange-200/40 shadow-md rounded-lg">
+      <section className="max-w-5xl mx-auto p-6 bg-orange-100/40 shadow-md rounded-lg">
         {/* <img
           src={packageData.images[0]}
           alt={packageData.tripTitle}
@@ -65,18 +69,20 @@ const PackageDetails = () => {
         /> */}
 
         <div className="mt-6">
-          <p className="text-teal-500 uppercase text-sm font-bold">
+          <p className="text-blue-500 uppercase text-sm font-bold">
             {packageData.tourType}
           </p>
 
-          <h1 className="text-2xl font-bold text-gray-800 mt-2">
-            {packageData.tripTitle}
-          </h1>
+          <div className="flex  justify-between items-center ">
+            <h2 className="text-2xl font-bold text-gray-800 mt-2">
+              {packageData.tripTitle}
+            </h2>
 
-          <p className="text-lg text-gray-700 font-semibold mt-4">
-            Price:$ <span className="text-blue-500">{packageData?.price}</span>
-          </p>
-
+            <p className="text-2xl text-gray-700 font-semibold mt-4">
+              Price:${" "}
+              <span className="text-blue-500">{packageData?.price}</span>
+            </p>
+          </div>
           <div className="mt-6">
             <h2 className="text-xl font-semibold text-gray-800">About</h2>
             <p className="text-gray-600 mt-2">{packageData?.about}</p>
@@ -84,20 +90,22 @@ const PackageDetails = () => {
 
           <div className="mt-6">
             <h2 className="text-xl font-semibold text-gray-800">Tour Plan</h2>
-            <p className="text-gray-600 mt-2 whitespace-pre-wrap">
-              {packageData?.tourPlan}
-            </p>
+
+            <TourPlan tourPlan={packageData?.tourPlan}></TourPlan>
           </div>
         </div>
       </section>
       {/* guide info */}
 
-      <section></section>
+      <section>
+        {" "}
+        <GuideSection />
+      </section>
       {/* booking form */}
       <section>
-        <div className="max-w-4xl mx-auto p-6 bg-base-200 shadow-md rounded-lg my-4">
+        <div className="max-w-5xl mx-auto p-6 bg-blue-100 shadow-md rounded-lg my-4">
           <div className="">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
               Booking Form
             </h2>
           </div>

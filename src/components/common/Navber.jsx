@@ -79,7 +79,7 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
             >
               {navLinks}
             </ul>
@@ -93,7 +93,7 @@ const Navber = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1 text-lg font-medium">{navLinks}</ul>
         </div>
         <div className="navbar-end">
           {user ? (
@@ -105,10 +105,7 @@ const Navber = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-10 rounded-full">
-                    <img
-                      alt="User Profile"
-                      src={user?.photoURL}
-                    />
+                    <img alt="User Profile" src={user?.photoURL} />
                   </div>
                 </div>
                 <ul
@@ -116,7 +113,9 @@ const Navber = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w- p-2 shadow space-y-1"
                 >
                   <li>
-                    <Link to="/dashboard" className="px-0 py-0.5">Dashboard</Link>
+                    <Link to="/dashboard" className="px-0 py-0.5">
+                      Dashboard
+                    </Link>
                   </li>
                   <li className="text-cener">Hi, {user?.displayName}</li>
                   <li>{user?.email}</li>

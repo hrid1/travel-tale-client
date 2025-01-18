@@ -14,6 +14,7 @@ import MyBookings from "../pages/Dashboard/Tourist/MyBookings";
 import JoinAsTourGuide from "../pages/Dashboard/Tourist/JoinAsGuide";
 import ManageCandidate from "../pages/Dashboard/Admin/ManageCandidate";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import AddPackage from "../pages/Dashboard/Admin/AddPackage";
 
 export const router = createBrowserRouter([
   {
@@ -101,7 +102,7 @@ export const router = createBrowserRouter([
         path: "add-package",
         element: (
           <AdminRoute>
-            <h3> Add Package </h3>
+            <AddPackage />
           </AdminRoute>
         ),
       },

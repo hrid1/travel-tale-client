@@ -16,19 +16,20 @@ const PackagesTab = () => {
     },
   });
 
+  console.log(packages)
   if (isLoading) return <CardsSkeleto />;
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {packages.map((pkg) => (
+        {packages?.map((pkg) => (
           <div
             key={pkg._id}
             className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col"
           >
             {/* Image Section */}
             <img
-              src={pkg.image}
+              src={pkg?.images[0]}
               alt={pkg.tripTitle}
               className="w-full h-48 object-cover"
             />

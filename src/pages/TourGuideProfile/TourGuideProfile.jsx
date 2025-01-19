@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const TourGuideProfile = () => {
+
+    const guide = useLoaderData();
+
   // Mock tour guide data
-  const guide = {
-    _id: "678c1011da6342f043021ff2",
-    name: "Rafi",
-    image: "https://i.ibb.co/dD4pr1s/person2.png",
-    email: "rafi@gmail.com",
-    role: "guide",
-    info: {
-      title: "Aliquam dolor irure",
-      reason:
-        "Distinctively administrate business resources vis-a-vis ethical niches. Competently monetize premium infrastructures with leading-edge users. Interactively incentivize holistic metrics.",
-      cvLink: "https://www.topysox.us",
-    },
-  };
+//   const guide = {
+//     _id: "678c1011da6342f043021ff2",
+//     name: "Rafi",
+//     image: "https://i.ibb.co/dD4pr1s/person2.png",
+//     email: "rafi@gmail.com",
+//     role: "guide",
+//     info: {
+//       title: "Aliquam dolor irure",
+//       reason:
+//         "Distinctively administrate business resources vis-a-vis ethical niches. Competently monetize premium infrastructures with leading-edge users. Interactively incentivize holistic metrics.",
+//       cvLink: "https://www.topysox.us",
+//     },
+//   };
 
   const [stories, setStories] = useState([]);
 

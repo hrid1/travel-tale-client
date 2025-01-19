@@ -4,6 +4,7 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import PackagesTab from "./PackagesTab";
+import CardsSkeleto from "../../components/CardsSkeleto";
 
 const TourismTravelGuide = () => {
   // const packages = [
@@ -27,30 +28,40 @@ const TourismTravelGuide = () => {
   //   },
   // ];
 
-  const tourGuides = [
-    {
-      id: 1,
-      name: "John Doe",
-      experience: "5 Years",
-      img: "path/to/guide1.jpg",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      experience: "3 Years",
-      img: "path/to/guide2.jpg",
-    },
-    {
-      id: 3,
-      name: "Mohammed Ali",
-      experience: "7 Years",
-      img: "path/to/guide3.jpg",
-    },
-  ];
+  // const tourGuides = [
+  //   {
+  //     id: 1,
+  //     name: "John Doe",
+  //     experience: "5 Years",
+  //     img: "path/to/guide1.jpg",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Jane Smith",
+  //     experience: "3 Years",
+  //     img: "path/to/guide2.jpg",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Mohammed Ali",
+  //     experience: "7 Years",
+  //     img: "path/to/guide3.jpg",
+  //   },
+  // ];
 
-
+  const { data: tourGuides = [], isLoading } = useQuery({
+    queryKey: ["guide"],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/users/guide?limit=true`
+      );
+      console.log(data);
+      return data;
+    },
+  });
 
   // console.log(pakages);
+  if (isLoading) return <CardsSkeleto />;
   return (
     <section className="py-10 bg-gray-100">
       <div className="container mx-auto px-6">
@@ -78,20 +89,20 @@ const TourismTravelGuide = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {tourGuides.map((guide) => (
                 <div
-                  key={guide.id}
+                  key={guide._id}
                   className="bg-white rounded-lg shadow-lg overflow-hidden"
                 >
                   <img
-                    src={guide.img}
+                    src={guide?.image}
                     alt={guide.name}
-                    className="w-full h-40 object-cover"
+                    className="w-32 rounded-full h-40 mx-auto object-cover"
                   />
                   <div className="p-4">
                     <h3 className="text-lg font-semibold text-gray-700">
-                      {guide.name}
+                      {guide?.name}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      Experience: {guide.experience}
+                      Email: {guide?.email}
                     </p>
                     <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
                       View Profile

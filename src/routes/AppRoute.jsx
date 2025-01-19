@@ -15,6 +15,7 @@ import JoinAsTourGuide from "../pages/Dashboard/Tourist/JoinAsGuide";
 import ManageCandidate from "../pages/Dashboard/Admin/ManageCandidate";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AddPackage from "../pages/Dashboard/Admin/AddPackage";
+import TourGuideProfile from "../pages/TourGuideProfile/TourGuideProfile";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,12 @@ export const router = createBrowserRouter([
         element: <PackageDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/package/${params.id}`),
+      },
+      {
+        path: "user/guide/:email",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/user/guide/${params.email}`),
+        element: <TourGuideProfile/>,
       },
       {
         path: "community",

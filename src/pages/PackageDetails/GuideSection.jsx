@@ -21,7 +21,7 @@ const GuideSection = () => {
       <section className="p-6 bg-gray-100">
         <h2 className="text-3xl font-bold text-center mb-8">Our Tour Guides</h2>
         <div className=" gap-8">
-          <Marquee pauseOnHover={true} >
+          <Marquee pauseOnHover={true}>
             <div className="flex ">
               {guides.map((guide, index) => (
                 <div
@@ -43,17 +43,10 @@ const GuideSection = () => {
                     <p className="text-gray-700 text-sm">{guide.info.reason}</p>
                   </div>
                   <Link
-                    to={`guide/${guide?._id}`}
+                    to={`/user/guide/${guide?.email}`}
                     className="bg-teal-500 text-white text-center py-2 rounded-b-lg "
                   >
-                    <a
-                      href={guide.info.cvLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white font-semibold"
-                    >
-                      View CV
-                    </a>
+                    View Details
                   </Link>
                 </div>
               ))}

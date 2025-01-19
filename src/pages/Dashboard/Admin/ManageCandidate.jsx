@@ -60,13 +60,13 @@ const ManageCandidate = () => {
   if (isLoading) return <Spiner />;
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
-      <h2 className="text-2xl font-bold text-cyan-600 mb-6">
+      <h2 className="text-2xl font-bold text-green-600 mb-6">
         Manage Candidates
       </h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full bg-white shadow-lg rounded-lg">
           <thead>
-            <tr className="bg-cyan-500 text-white">
+            <tr className="bg-green-500 text-white">
               <th className="py-2 px-4">#</th>
               <th className="py-2 px-4">Name</th>
               <th className="py-2 px-4">Role</th>

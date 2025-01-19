@@ -16,6 +16,8 @@ import ManageCandidate from "../pages/Dashboard/Admin/ManageCandidate";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AddPackage from "../pages/Dashboard/Admin/AddPackage";
 import TourGuideProfile from "../pages/TourGuideProfile/TourGuideProfile";
+import AddStory from "../pages/Dashboard/common/AddStory";
+import ManageStories from "../pages/Dashboard/common/ManageStories";
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +39,7 @@ export const router = createBrowserRouter([
         path: "user/guide/:email",
         loader: ({ params }) =>
           fetch(`http://localhost:5000/user/guide/${params.email}`),
-        element: <TourGuideProfile/>,
+        element: <TourGuideProfile />,
       },
       {
         path: "community",
@@ -97,11 +99,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "guide-manage-stories",
-        element: <h3>Guide Manage Story</h3>,
+        element: <ManageStories />,
       },
       {
         path: "guide-add-stories",
-        element: <h3>Guide Add Story</h3>,
+        element: <AddStory />,
       },
 
       // for admin

@@ -55,7 +55,7 @@ const Register = () => {
   return (
     <div>
       <div className="flex items-center justify-center  min-h-[calc(100vh-80px)]">
-        <div className="w-full border max-w-md p-6 bg-cyan-50 rounded-lg shadow-xl">
+        <div className="w-full border max-w-md p-6 bg-green-50 rounded-lg shadow-xl">
           <h2 className="text-2xl font-bold text-center text-gray-800">
             Register Your Account
           </h2>
@@ -146,7 +146,7 @@ const Register = () => {
 
             <button
               type="submit"
-              className="w-full px-4 py-2 mt-6 text-white bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg  font-semibold"
+              className="w-full px-4 py-2 mt-6 text-white bg-gradient-to-r from-green-400 to-green-600 rounded-lg  font-semibold"
             >
               Register
             </button>
@@ -157,7 +157,7 @@ const Register = () => {
             </span>
             <Link
               to="/login"
-              className="text-sm font-medium text-cyan-600 hover:underline"
+              className="text-sm font-medium text-green-600 hover:underline"
             >
               Sign In
             </Link>
@@ -173,11 +173,11 @@ const Register = () => {
         </div> */}
           <p className="mt-4 text-sm text-center text-gray-600">
             By signing in, you agree to our{" "}
-            <Link to="/" className="text-cyan-600 hover:underline">
+            <Link to="/" className="text-green-600 hover:underline">
               Terms
             </Link>{" "}
             and{" "}
-            <Link to="/" className="text-cyan-600 hover:underline">
+            <Link to="/" className="text-green-600 hover:underline">
               Privacy Policy
             </Link>
             .

@@ -45,7 +45,7 @@ const MyBookings = () => {
   return (
     <div className="container mx-auto py-10 px-4">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">My Bookings</h2>
-      <table className="min-w-full bg-cyan-100/60 border border-gray-200 rounded-lg ">
+      <table className="min-w-full bg-green-100/60 border border-gray-200 rounded-lg ">
         <thead>
           <tr className="bg-gray-200 text-gray-700 text-semibold">
             <th className="py-2 px-4 border">Package Name</th>
@@ -69,7 +69,7 @@ const MyBookings = () => {
               <td className="py-2 px-4 border space-x-2">
                 <button
                   onClick={() => handlePay(booking?._id)}
-                  className="bg-blue-500 text-white  rounded-lg hover:bg-blue-600 btn btn-sm"
+                  className="bg-green-500 text-white  rounded-lg hover:bg-green-600 btn btn-sm"
                 >
                   Pay
                 </button>

@@ -2,46 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const TourGuideProfile = () => {
-
-    const guide = useLoaderData();
-
-  // Mock tour guide data
-//   const guide = {
-//     _id: "678c1011da6342f043021ff2",
-//     name: "Rafi",
-//     image: "https://i.ibb.co/dD4pr1s/person2.png",
-//     email: "rafi@gmail.com",
-//     role: "guide",
-//     info: {
-//       title: "Aliquam dolor irure",
-//       reason:
-//         "Distinctively administrate business resources vis-a-vis ethical niches. Competently monetize premium infrastructures with leading-edge users. Interactively incentivize holistic metrics.",
-//       cvLink: "https://www.topysox.us",
-//     },
-//   };
-
-  const [stories, setStories] = useState([]);
-
-  // Mock stories data (Replace with API call to fetch stories by this guide)
-  useEffect(() => {
-    const fetchStories = async () => {
-      const mockStories = [
-        {
-          id: "1",
-          title: "Mountain Adventure",
-          description:
-            "Exploring the scenic mountains with a group of adventurous travelers.",
-        },
-        {
-          id: "2",
-          title: "Cultural Tour",
-          description: "Guiding travelers through historical landmarks.",
-        },
-      ];
-      setStories(mockStories);
-    };
-    fetchStories();
-  }, []);
+  const data = useLoaderData() || {};
+  const { guide = [], stories = [] } = data;
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
@@ -49,14 +11,14 @@ const TourGuideProfile = () => {
         {/* Profile Section */}
         <div className="flex flex-col justify-center items-center space-x-6 mb-6">
           <img
-            src={guide.image}
-            alt={guide.name}
+            src={guide?.image}
+            alt={guide?.name}
             className="w-48 h-48 rounded-lg shadow-lg"
           />
           <div className="text-center mt-2">
-            <h2 className="text-2xl font-bold text-cyan-600">{guide.name}</h2>
-            <p className="text-gray-600">{guide.email}</p>
-            <p className="text-sm text-cyan-500 font-semibold capitalize">
+            <h2 className="text-2xl font-bold text-green-600">{guide?.name}</h2>
+            <p className="text-gray-600">{guide?.email}</p>
+            <p className="text-sm text-green-500 font-semibold capitalize">
               {guide.role}
             </p>
           </div>
@@ -68,24 +30,37 @@ const TourGuideProfile = () => {
           <p className="text-gray-600 mt-2">{guide.info.reason}</p>
         </div>
 
-    
-
         {/* Stories Section */}
         <div>
           <h3 className="text-lg font-semibold text-gray-800 mb-4">
             Stories Added
           </h3>
-          {stories.length > 0 ? (
+          {stories?.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {stories.map((story) => (
+              {stories?.map((story) => (
                 <div
-                  key={story.id}
-                  className="bg-gray-100 p-4 rounded-lg shadow-md"
+                  key={story._id}
+                  className="bg-gray-100 flex flex-col sm:flex-row items-center gap-4 p-4 rounded-lg shadow-md"
                 >
-                  <h4 className="text-md font-bold text-cyan-600 mb-2">
-                    {story.title}
-                  </h4>
-                  <p className="text-gray-600 text-sm">{story.description}</p>
+                  {/* Image Section */}
+                  <img
+                    className="w-60 h-40 rounded-md object-cover"
+                    src={story?.images?.[0]}
+                    alt={story.title}
+                  />
+
+                  {/* Content Section */}
+                  <div className="flex flex-col justify-between">
+                    <h4 className="text-lg font-bold text-green-600 mb-2">
+                      {story.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm mb-2">
+                      {story.description?.slice(0, 100)}
+                    </p>
+                    {/* <button className="text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md text-sm">
+               Read More
+             </button> */}
+                  </div>
                 </div>
               ))}
             </div>

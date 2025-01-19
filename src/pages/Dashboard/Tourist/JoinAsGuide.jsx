@@ -49,7 +49,7 @@ const JoinAsTourGuide = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
-        <h2 className="text-2xl font-bold text-cyan-600 text-center mb-6">
+        <h2 className="text-2xl font-bold text-green-600 text-center mb-6">
           Join as a Tour Guide
         </h2>
         <form onSubmit={handleSubmit}>
@@ -67,7 +67,7 @@ const JoinAsTourGuide = () => {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className="input input-bordered w-full border-cyan-500 focus:ring-cyan-500 focus:border-cyan-500"
+              className="input input-bordered w-full border-green-500 focus:ring-green-500 focus:border-green-500"
               placeholder="Enter your application title"
               required
             />
@@ -86,7 +86,7 @@ const JoinAsTourGuide = () => {
               name="reason"
               value={formData.reason}
               onChange={handleChange}
-              className="textarea textarea-bordered w-full border-cyan-500 focus:ring-cyan-500 focus:border-cyan-500"
+              className="textarea textarea-bordered w-full border-green-500 focus:ring-green-500 focus:border-green-500"
               placeholder="Share your motivation"
               rows="4"
               required
@@ -102,14 +102,14 @@ const JoinAsTourGuide = () => {
               CV Link
             </label>
             <div className="flex items-center space-x-2">
-              <FaPaperclip className="text-cyan-500" />
+              <FaPaperclip className="text-green-500" />
               <input
                 type="url"
                 id="cvLink"
                 name="cvLink"
                 value={formData.cvLink}
                 onChange={handleChange}
-                className="input input-bordered w-full border-cyan-500 focus:ring-cyan-500 focus:border-cyan-500"
+                className="input input-bordered w-full border-green-500 focus:ring-green-500 focus:border-green-500"
                 placeholder="Enter your CV link (e.g., Google Drive, LinkedIn)"
                 required
               />
@@ -119,7 +119,7 @@ const JoinAsTourGuide = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="btn bg-cyan-500 hover:bg-cyan-600 text-white w-full"
+            className="btn bg-green-500 hover:bg-green-600 text-white w-full"
           >
             Submit Application
           </button>

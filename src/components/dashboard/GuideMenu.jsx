@@ -1,16 +1,15 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 const GuideMenu = () => {
   return (
-    <ul className="menu font-semibold  text-base-content   p-4 space-y-0.5 ">
+    <ul className="menu font-semibold  p-4 space-y-0.5 text-white">
       {/* Sidebar content here */}
 
       <NavLink
         to="/dashboard"
         end
         className={({ isActive }) =>
-          `mx-auto border w-full p-2 rounded ${isActive ? "bg-blue-200" : ""}`
+          `mx-auto border-b-2 w-full p-2 rounded ${isActive ? "bg-green-900" : ""}`
         }
       >
         Manage Profile
@@ -18,7 +17,7 @@ const GuideMenu = () => {
       <NavLink
         to="my-assigned-tours"
         className={({ isActive }) =>
-          `mx-auto border w-full p-2 rounded ${isActive ? "bg-blue-200" : ""}`
+          `mx-auto border-b-2 w-full p-2 rounded ${isActive ? "bg-green-900" : ""}`
         }
       >
         My Assigned Tours
@@ -26,7 +25,7 @@ const GuideMenu = () => {
       <NavLink
         to="guide-manage-stories"
         className={({ isActive }) =>
-          `mx-auto border w-full p-2 rounded ${isActive ? "bg-blue-200" : ""}`
+          `mx-auto border-b-2 w-full p-2 rounded ${isActive ? "bg-green-900" : ""}`
         }
       >
         Manage Stories
@@ -34,7 +33,7 @@ const GuideMenu = () => {
       <NavLink
         to="guide-add-stories"
         className={({ isActive }) =>
-          `mx-auto border w-full p-2 rounded ${isActive ? "bg-blue-200" : ""}`
+          `mx-auto border-b-2 w-full p-2 rounded ${isActive ? "bg-green-900" : ""}`
         }
       >
         Add Stories

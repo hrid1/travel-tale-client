@@ -34,7 +34,7 @@ const GuideSection = () => {
                     className="w-40 h-40 object-cover rounded-full mx-auto mt-4"
                   />
                   <div className="p-4">
-                    <h3 className="text-xl font-semibold text-teal-500 mb-2">
+                    <h3 className="text-xl font-semibold text-green-500 mb-2">
                       {guide.name}
                     </h3>
                     <p className="text-gray-600 text-sm mb-2">
@@ -44,7 +44,7 @@ const GuideSection = () => {
                   </div>
                   <Link
                     to={`/user/guide/${guide?.email}`}
-                    className="bg-teal-500 text-white text-center py-2 rounded-b-lg "
+                    className="bg-green-500 text-white text-center py-2 rounded-b-lg "
                   >
                     View Details
                   </Link>

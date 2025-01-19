@@ -69,7 +69,7 @@ const PackageDetails = () => {
         /> */}
 
         <div className="mt-6">
-          <p className="text-blue-500 uppercase text-sm font-bold">
+          <p className="text-green-500 uppercase text-sm font-bold">
             {packageData.tourType}
           </p>
 
@@ -80,7 +80,7 @@ const PackageDetails = () => {
 
             <p className="text-2xl text-gray-700 font-semibold mt-4">
               Price:${" "}
-              <span className="text-blue-500">{packageData?.price}</span>
+              <span className="text-green-500">{packageData?.price}</span>
             </p>
           </div>
           <div className="mt-6">
@@ -103,7 +103,7 @@ const PackageDetails = () => {
       </section>
       {/* booking form */}
       <section>
-        <div className="max-w-5xl mx-auto p-6 bg-blue-100 shadow-md rounded-lg my-4">
+        <div className="max-w-5xl mx-auto p-6 bg-green-100 shadow-md rounded-lg my-4">
           <div className="">
             <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
               Booking Form
@@ -230,7 +230,7 @@ const PackageDetails = () => {
             <div className="mb-4">
               <button
                 type="submit"
-                className="w-5/6 block mt-4 bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 mx-auto"
+                className="w-5/6 block mt-4 bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 mx-auto"
               >
                 Book Now
               </button>

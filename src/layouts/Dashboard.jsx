@@ -23,7 +23,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold  underline text-sky-600  rounded-sm p-2"
+            ? "font-bold  underline text-green-600  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/"
@@ -33,7 +33,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-sky-600  rounded-sm p-2"
+            ? "font-bold underline text-green-600  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/community"
@@ -43,7 +43,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-sky-600 0  rounded-sm p-2"
+            ? "font-bold underline text-green-600 0  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/about"
@@ -53,7 +53,7 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-sky-600 0  rounded-sm p-2"
+            ? "font-bold underline text-green-600 0  rounded-sm p-2"
             : "p-2 border rounded"
         }
         to="/trips"
@@ -73,7 +73,7 @@ const Dashboard = () => {
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-sm btn-primary m-1 drawer-button md:hidden right-0 rounded  absolute"
+            className="btn btn-sm bg-green-600 text-white m-1 drawer-button md:hidden right-0 rounded  absolute"
           >
             <TiThMenu />
           </label>
@@ -89,13 +89,13 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="min-h-screen bg-sky-600 w-60  text-white  flex flex-col justify-between">
+          <div className="min-h-screen bg-green-600 w-60  text-white  flex flex-col justify-between">
             {/* logo & name */}
             <div className="h-14">
               logo
               <label
                 htmlFor="my-drawer-2"
-                className="font-bold rounded drawer-button md:hidden right-0 btn btn-sm  absolute bg-sky-600 hover:bg-red-600 text-white"
+                className="font-bold rounded drawer-button md:hidden right-0 btn btn-sm  absolute bg-green-600 hover:bg-green-600 text-white"
               >
                 X
               </label>

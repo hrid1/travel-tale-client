@@ -30,16 +30,16 @@ const ForgotPassword = () => {
       >
         <button
           type="button"
-          className="mx-auto  border h-12 w-12 rounded-md bg-cyan-50 flex items-center justify-center"
+          className="mx-auto  border h-12 w-12 rounded-md bg-green-50 flex items-center justify-center"
         >
           <MdLockOutline className="mx-auto my-4 text-3xl  rounded-md" />
         </button>
 
-        <h2 className="text-center mb-6 font-extrabold text-2xl text-cyan-600">
+        <h2 className="text-center mb-6 font-extrabold text-2xl text-green-600">
           Forgot Password
         </h2>
         <input
-          className="input input-bordered w-full mb-4 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500"
+          className="input input-bordered w-full mb-4 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500"
           type="email"
           name="email"
           placeholder="Enter your email"
@@ -48,13 +48,13 @@ const ForgotPassword = () => {
 
         <div className="flex justify-between items-center">
           <Link to="/">
-            <button type="button" className="btn text-white bg-cyan-500">
+            <button type="button" className="btn text-white bg-green-500">
               <FaLeftLong /> Go Back{" "}
             </button>
           </Link>
           <button
             type="submit"
-            className="btn  mt-2 text-white bg-cyan-500 hover:bg-cyan-600"
+            className="btn  mt-2 text-white bg-green-500 hover:bg-green-600"
           >
             Get Code
           </button>

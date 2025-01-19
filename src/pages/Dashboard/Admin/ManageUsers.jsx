@@ -35,7 +35,7 @@ const ManageUsers = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
-      <h2 className="text-2xl font-bold text-cyan-600 mb-6 text-center">
+      <h2 className="text-2xl font-bold text-green-600 mb-6 text-center">
         User Management
       </h2>
 
@@ -45,14 +45,14 @@ const ManageUsers = () => {
         <input
           type="text"
           placeholder="Search by name"
-          className="input input-bordered w-full md:w-1/4 border-cyan-500 focus:ring-cyan-500 focus:border-cyan-500"
+          className="input input-bordered w-full md:w-1/4 border-green-500 focus:ring-green-500 focus:border-green-500"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 
         {/* Filter by Role */}
         <select
-          className="select select-bordered w-full md:w-1/4 border-cyan-500 focus:ring-cyan-500 focus:border-cyan-500"
+          className="select select-bordered w-full md:w-1/4 border-green-500 focus:ring-green-500 focus:border-green-500"
           value={roleFilter}
           onChange={(e) => setRoleFilter(e.target.value)}
         >
@@ -67,7 +67,7 @@ const ManageUsers = () => {
       <div className="overflow-x-auto px-2 ">
         <table className="table table-zebra  mx-auto bg-white shadow-lg  rounded-lg">
           <thead>
-            <tr className="bg-cyan-500 text-white text-center">
+            <tr className="bg-green-500 text-white text-center">
               <th className="py-2 px-4">#</th>
               <th className="py-2 px-4">Image</th>
               <th className="py-2 px-4">Name</th>

@@ -37,7 +37,7 @@ const PackagesTab = () => {
             {/* Card Content */}
             <div className="p-4 flex flex-col flex-grow">
               {/* Tour Type */}
-              <p className="text-sm font-medium text-teal-500 uppercase">
+              <p className="text-sm font-medium text-green-500 uppercase">
                 {pkg.tourType}
               </p>
               {/* Trip Title */}
@@ -48,7 +48,7 @@ const PackagesTab = () => {
               <p className="text-sm text-gray-600 mt-1">Price: {pkg.price}</p>
               {/* View Details Button */}
               <Link to={`/package/${pkg?._id}`}>
-                <button className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                <button className="mt-auto bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
                   View Details
                 </button>
               </Link>

@@ -5,56 +5,16 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import PackagesTab from "./PackagesTab";
 import CardsSkeleto from "../../components/CardsSkeleto";
+import UseAxiosPublic from "../../hooks/UseAxiosPublic";
+import { Link } from "react-router-dom";
 
 const TourismTravelGuide = () => {
-  // const packages = [
-  //   {
-  //     id: 1,
-  //     title: "Sundarbans Adventure",
-  //     price: "$300",
-  //     img: "path/to/img1.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Hill Tracts Trek",
-  //     price: "$250",
-  //     img: "path/to/img2.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Cultural Dhaka Tour",
-  //     price: "$150",
-  //     img: "path/to/img3.jpg",
-  //   },
-  // ];
-
-  // const tourGuides = [
-  //   {
-  //     id: 1,
-  //     name: "John Doe",
-  //     experience: "5 Years",
-  //     img: "path/to/guide1.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Jane Smith",
-  //     experience: "3 Years",
-  //     img: "path/to/guide2.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Mohammed Ali",
-  //     experience: "7 Years",
-  //     img: "path/to/guide3.jpg",
-  //   },
-  // ];
+  const axiosPublic = UseAxiosPublic();
 
   const { data: tourGuides = [], isLoading } = useQuery({
     queryKey: ["guide"],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/users/guide?limit=true`
-      );
+      const { data } = await axiosPublic.get("/users/guide?limit=true");
       console.log(data);
       return data;
     },
@@ -71,10 +31,10 @@ const TourismTravelGuide = () => {
         <Tabs>
           {/* Tab List */}
           <TabList className="flex justify-center space-x-6 border-b-2 border-gray-300 mb-6">
-            <Tab className="px-4 py-2 cursor-pointer text-gray-600 focus:outline-none hover:text-blue-600 border-b-2 border-transparent focus:border-blue-600">
+            <Tab className="px-4 py-2 cursor-pointer text-gray-600 focus:outline-none hover:text-green-600 border-b-2 border-transparent focus:border-green-600">
               Our Packages
             </Tab>
-            <Tab className="px-4 py-2 cursor-pointer text-gray-600 focus:outline-none hover:text-blue-600 border-b-2 border-transparent focus:border-blue-600">
+            <Tab className="px-4 py-2 cursor-pointer text-gray-600 focus:outline-none hover:text-green-600 border-b-2 border-transparent focus:border-green-600">
               Meet Our Tour Guides
             </Tab>
           </TabList>
@@ -104,9 +64,11 @@ const TourismTravelGuide = () => {
                     <p className="text-sm text-gray-600">
                       Email: {guide?.email}
                     </p>
-                    <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
-                      View Profile
-                    </button>
+                    <Link to={`user/guide/${guide?.email}`} >
+                      <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+                        View Profile
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))}

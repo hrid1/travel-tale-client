@@ -19,7 +19,7 @@ const Overview = () => {
         {/* Left Section: Info */}
         <div className="w-full md:w-1/2 px-5 mb-5">
           <motion.div
-            className=" bg-blue-50 rounded-lg p-6 shadow-lg"
+            className=" bg-green-50 rounded-lg p-6 shadow-lg"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -27,12 +27,12 @@ const Overview = () => {
             <h3 className="text-2xl font-bold mb-4">
               Discover: Your Gateway to Adventure
             </h3>
-            <p className="text-blue-800 text-lg">
+            <p className="text-green-800 text-lg">
               Uncover the hidden gems of Bangladesh! From its breathtaking
               natural beauty to its rich cultural heritage, embark on a journey
               like no other.
             </p>
-            <ul className="mt-4 text-blue-900 text-sm list-disc list-inside space-y-2">
+            <ul className="mt-4 text-green-900 text-sm list-disc list-inside space-y-2">
               <li>
                 🌳 <strong>Sundarbans:</strong> Wander through the world’s
                 largest mangrove forest, home to the majestic Bengal tiger and

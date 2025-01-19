@@ -18,7 +18,7 @@ const Navber = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold  underline text-cyan-500  rounded-sm p-2"
+            ? "font-bold  underline text-green-500  rounded-sm p-2"
             : "p-2"
         }
         to="/"
@@ -27,7 +27,7 @@ const Navber = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "font-bold underline text-cyan-500  rounded-sm p-2" : "p-2"
+          isActive ? "font-bold underline text-green-500  rounded-sm p-2" : "p-2"
         }
         to="/community"
       >
@@ -36,7 +36,7 @@ const Navber = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-cyan-500 0  rounded-sm p-2"
+            ? "font-bold underline text-green-500 0  rounded-sm p-2"
             : "p-2"
         }
         to="/about"
@@ -46,7 +46,7 @@ const Navber = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-cyan-500 0  rounded-sm p-2"
+            ? "font-bold underline text-green-500 0  rounded-sm p-2"
             : "p-2"
         }
         to="/trips"
@@ -133,7 +133,7 @@ const Navber = () => {
                 <button className="btn ">Login</button>
               </Link>
               <Link to="/register">
-                <button className="btn bg-cyan-300">Register</button>
+                <button className="btn bg-green-300">Register</button>
               </Link>
             </div>
           )}

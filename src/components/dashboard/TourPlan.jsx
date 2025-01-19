@@ -11,7 +11,7 @@ const TourPlan = ({ tourPlan }) => {
           key={index}
           className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
         >
-          <h3 className="text-teal-500 font-semibold mb-2">{`Day ${
+          <h3 className="text-green-500 font-semibold mb-2">{`Day ${
             index + 1
           }`}</h3>
           <p className="text-gray-700">{plan.split(": ")[1]}</p>

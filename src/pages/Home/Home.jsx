@@ -1,6 +1,7 @@
 import React from "react";
 import Overview from "./Overview";
 import TourismTravel from "./TourismTravel";
+import TouristStory from "./TouristStory";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <h2>HOme page this</h2>
       <Overview />
       <TourismTravel />
+      <TouristStory/>
     </div>
   );
 };

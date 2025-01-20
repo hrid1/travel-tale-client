@@ -89,7 +89,7 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="min-h-screen bg-green-600 w-60  text-white  flex flex-col justify-between">
+          <div className="min-h-screen bg-green-600/90 w-60  text-white  flex flex-col justify-between">
             {/* logo & name */}
             <div className="h-14">
               logo

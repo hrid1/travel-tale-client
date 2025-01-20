@@ -50,12 +50,12 @@ const TourismTravelGuide = () => {
               {tourGuides.map((guide) => (
                 <div
                   key={guide._id}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden"
+                  className="bg-white rounded-lg shadow-lg overflow-hidden text-center"
                 >
                   <img
                     src={guide?.image}
                     alt={guide.name}
-                    className="w-32 rounded-full h-40 mx-auto object-cover"
+                    className="w-32 rounded-full h-40 mx-auto object-cover mt-2.5"
                   />
                   <div className="p-4">
                     <h3 className="text-lg font-semibold text-gray-700">

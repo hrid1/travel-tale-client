@@ -31,7 +31,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "package/:id",
-        element: <PackageDetails />,
+        element: (
+          <PrivateRoute>
+            <PackageDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/package/${params.id}`),
       },
@@ -74,6 +78,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <ManageProfile />,
+      },
+      {
+        path: "add-stories",
+        element: <AddStory />,
       },
       // for tourist
       {

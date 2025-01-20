@@ -32,7 +32,7 @@ const AddPackage = () => {
     console.log("Submitted Package Data:", formData);
     // Add logic to send data to the backend here
     try {
-      const { data } = await axios.put(
+      const { data } = await axios.post(
         `http://localhost:5000/package`,
         formData
       );

@@ -39,7 +39,7 @@ const ManageStories = () => {
               className="bg-white shadow-lg rounded-lg p-4 flex flex-col"
             >
               {/* Story Images */}
-              <div className="grid h-28  grid-cols-2 gap-2 mb-4">
+              <div className="grid h-44  grid-cols-2 gap-2 mb-4">
                 {story?.images?.slice(0,2).map((img, index) => (
                   <img
                     key={index}

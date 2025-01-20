@@ -35,7 +35,8 @@ const StoryCard = ({ story }) => {
         {/* Share Button */}
         <div className="mt-4 right-2.5 bottom-2 absolute">
           <FacebookShareButton
-            url={`http://localhost:5173/story/${story._id}`}
+           url={`${import.meta.env.VITE_API_URL}/story/${story._id}`}
+
             quote={story.title}
             hashtag="#travel"
           >

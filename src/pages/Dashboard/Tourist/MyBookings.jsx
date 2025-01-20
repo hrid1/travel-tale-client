@@ -6,19 +6,25 @@ import dayjs from "dayjs";
 import { useQuery } from "@tanstack/react-query";
 import Spiner from "../../../components/Spiner";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyBookings = () => {
   //   const [bookings, setBookings] = useState([]);
   const navigate = useNavigate();
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   // load data
   const { data: bookings = [], isLoading } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `http://localhost:5000/booking/${user?.email}`
-      );
-      return data;
+      try {
+        const { data } = await axiosSecure.get(
+          `/booking/${user?.email}`
+        );
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
 

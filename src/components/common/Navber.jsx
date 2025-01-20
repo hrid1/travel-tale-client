@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/travel-logo.png";
+import logo from "../../assets/travel-tale.png";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
@@ -86,10 +86,10 @@ const Navber = () => {
           </div>
           <Link
             to="/"
-            className="flex items-center justify-center gap-2 text-xl"
+            className="flex items-center justify-center  text-xl"
           >
             <img className="w-12 h-12" src={logo} alt="" />
-            <span className="font-bold ">Travel Tale</span>
+            <span className="font-extrabold ">Travel Tale</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

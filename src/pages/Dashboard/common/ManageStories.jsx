@@ -4,13 +4,14 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const ManageStories = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  const { data: stories = [] } = useQuery({
+  const { data: stories = [], refetch } = useQuery({
     queryKey: ["story"],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/stories/${user?.email}`);
@@ -21,7 +22,30 @@ const ManageStories = () => {
   console.log(stories);
 
   // Handle delete story
-  const handleDelete = async (id) => {};
+  const handleDelete = async (id) => {
+    // console.log(id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#16A34A",
+      cancelButtonColor: "#FFBA00",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const { data } = await axiosSecure.delete(`/story/${id}`);
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        refetch();
+      }
+    });
+  };
 
   // Handle edit story navigation
   const handleUpdate = (id) => {
@@ -64,7 +88,7 @@ const ManageStories = () => {
                 </button>
                 <button
                   className="btn btn-sm bg-orange-500 hover:bg-red-600 text-white"
-                  //   onClick={() => handleDelete(story.id)}
+                  onClick={() => handleDelete(story._id)}
                 >
                   Delete
                 </button>

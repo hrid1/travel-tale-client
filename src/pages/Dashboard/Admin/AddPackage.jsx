@@ -4,9 +4,11 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import Spiner2 from "../../../components/Spiner2";
 
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 const AddPackage = () => {
   // Handle form submission
-
+  const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,10 +34,7 @@ const AddPackage = () => {
     console.log("Submitted Package Data:", formData);
     // Add logic to send data to the backend here
     try {
-      const { data } = await axios.post(
-        `http://localhost:5000/package`,
-        formData
-      );
+      const { data } = await axiosSecure.post(`/package`, formData);
       // console.log(data);
       toast.success("Package Succesfully Added!");
       setLoading(false);
@@ -167,6 +166,7 @@ const AddPackage = () => {
           {/* Submit Button */}
           <button
             type="submit"
+            disabled={loading}
             className="btn bg-green-500 hover:bg-green-600 text-white w-full"
           >
             Add Package

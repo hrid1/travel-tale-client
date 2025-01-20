@@ -38,12 +38,12 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/package/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/package/${params.id}`),
       },
       {
         path: "user/guide/:email",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/user/guide/${params.email}`),
+          fetch(`${import.meta.env.VITE_API_URL}/user/guide/${params.email}`),
         element: <TourGuideProfile />,
       },
       {
@@ -136,7 +136,6 @@ export const router = createBrowserRouter([
         path: "manage-candidates",
         element: <ManageCandidate />,
       },
-      
     ],
   },
 ]);

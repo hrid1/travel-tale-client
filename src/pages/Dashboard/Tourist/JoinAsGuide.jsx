@@ -4,10 +4,11 @@ import { FaPaperclip } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const JoinAsTourGuide = () => {
   const { user } = useAuth();
-
+  const axiosSecure = useAxiosSecure();
   const [formData, setFormData] = useState({
     title: "",
     reason: "",
@@ -26,13 +27,10 @@ const JoinAsTourGuide = () => {
 
     // send to backend here
     try {
-      const { data } = await axios.patch(
-        `http://localhost:5000/users/${user?.email}`,
-        {
-          status: "Requested",
-          info: formData,
-        }
-      );
+      const { data } = await axiosSecure.patch(`/users/${user?.email}`, {
+        status: "Requested",
+        info: formData,
+      });
       console.log(data);
       Swal.fire({
         title: "Good job!",

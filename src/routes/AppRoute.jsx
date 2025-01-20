@@ -18,6 +18,7 @@ import AddPackage from "../pages/Dashboard/Admin/AddPackage";
 import TourGuideProfile from "../pages/TourGuideProfile/TourGuideProfile";
 import AddStory from "../pages/Dashboard/common/AddStory";
 import ManageStories from "../pages/Dashboard/common/ManageStories";
+import UpdateStories from "../pages/Dashboard/common/UpdateStories";
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
         path: "add-stories",
         element: <AddStory />,
       },
+      {
+        path: "update-story/:id",
+        element: <UpdateStories />,
+      },
       // for tourist
       {
         path: "my-bookings",
@@ -131,7 +136,7 @@ export const router = createBrowserRouter([
         path: "manage-candidates",
         element: <ManageCandidate />,
       },
-      // for guide
+      
     ],
   },
 ]);

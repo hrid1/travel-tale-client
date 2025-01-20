@@ -24,8 +24,8 @@ const ManageStories = () => {
   const handleDelete = async (id) => {};
 
   // Handle edit story navigation
-  const handleEdit = (id) => {
-    navigate(`/edit-story/${id}`);
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/update-story/${id}`);
   };
 
   return (
@@ -40,7 +40,7 @@ const ManageStories = () => {
             >
               {/* Story Images */}
               <div className="grid h-44  grid-cols-2 gap-2 mb-4">
-                {story?.images?.slice(0,2).map((img, index) => (
+                {story?.images?.slice(0, 2).map((img, index) => (
                   <img
                     key={index}
                     src={img}
@@ -58,7 +58,7 @@ const ManageStories = () => {
               <div className="mt-auto flex space-x-2">
                 <button
                   className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white"
-                  //   onClick={() => handleEdit(story.id)}
+                  onClick={() => handleUpdate(story._id)}
                 >
                   Edit
                 </button>

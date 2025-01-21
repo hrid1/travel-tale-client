@@ -41,12 +41,15 @@ const MyBookings = () => {
     try {
       axiosSecure.delete(`/booking/${id}`);
       toast.success("Booking Cancel!");
+      refetch();
     } catch (err) {
       console.log(err);
     }
     refetch();
   };
+
   if (isLoading) return <Spiner />;
+  
   return (
     <div className="container mx-auto py-10 px-4">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">My Bookings</h2>
@@ -65,7 +68,7 @@ const MyBookings = () => {
           {bookings.map((booking) => (
             <tr key={booking._id} className="text-center">
               <td className="py-2 px-4 border">{booking?.package}</td>
-              <td className="py-2 px-4 border">{booking?.guideInfo}</td>
+              <td className="py-2 px-4 border">{booking?.guideInfo?.guideName}</td>
               <td className="py-2 px-4 border">
                 {dayjs(booking?.date).format("DD-MM-YYYY")}
               </td>

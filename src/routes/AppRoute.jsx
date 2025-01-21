@@ -20,6 +20,8 @@ import AddStory from "../pages/Dashboard/common/AddStory";
 import ManageStories from "../pages/Dashboard/common/ManageStories";
 import UpdateStories from "../pages/Dashboard/common/UpdateStories";
 import Trips from "../pages/Trips/Trips";
+import AssignedTours from "../pages/Dashboard/Guide/AssignedTours";
+import Payment from "../pages/Dashboard/common/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -42,10 +44,14 @@ export const router = createBrowserRouter([
           fetch(`${import.meta.env.VITE_API_URL}/package/${params.id}`),
       },
       {
-        path: "user/guide/:email",
+        path: "user/guide/:email", 
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/user/guide/${params.email}`),
-        element: <TourGuideProfile />,
+        element: (
+          <PrivateRoute>
+            <TourGuideProfile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "community",
@@ -83,37 +89,69 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ManageProfile />,
+        element: (
+          <PrivateRoute>
+            <ManageProfile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "add-stories",
-        element: <AddStory />,
+        element: (
+          <PrivateRoute>
+            <AddStory />
+          </PrivateRoute>
+        ),
       },
       {
         path: "update-story/:id",
-        element: <UpdateStories />,
+        element: (
+          <PrivateRoute>
+            <UpdateStories />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "payment",
+        element: <Payment/>
       },
       // for tourist
       {
         path: "my-bookings",
-        element: <MyBookings />,
+        element: (
+          <PrivateRoute>
+            <MyBookings />
+          </PrivateRoute>
+        ),
       },
       {
         path: "tourist-manage-stories",
-        element: <h3>Manage Story</h3>,
+        element: (
+          <PrivateRoute>
+            <ManageStories />
+          </PrivateRoute>
+        ),
       },
       {
         path: "tourist-add-stories",
-        element: <h3>Add Story</h3>,
+        element: (
+          <PrivateRoute>
+            <AddStory />
+          </PrivateRoute>
+        ),
       },
       {
         path: "join-guide",
-        element: <JoinAsTourGuide />,
+        element: (
+          <PrivateRoute>
+            <JoinAsTourGuide />
+          </PrivateRoute>
+        ),
       },
       // for guide
       {
         path: "my-assigned-tours",
-        element: <h2> Guide My Assign Tours</h2>,
+        element: <AssignedTours />,
       },
       {
         path: "guide-manage-stories",
@@ -128,18 +166,32 @@ export const router = createBrowserRouter([
       {
         path: "add-package",
         element: (
-          <AdminRoute>
-            <AddPackage />
-          </AdminRoute>
+          <PrivateRoute>
+            <AdminRoute>
+              <AddPackage />
+            </AdminRoute>
+          </PrivateRoute>
         ),
       },
       {
         path: "manage-users",
-        element: <ManageUsers />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "manage-candidates",
-        element: <ManageCandidate />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageCandidate />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },

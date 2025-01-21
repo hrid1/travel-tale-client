@@ -27,15 +27,10 @@ const PackageDetails = () => {
     },
   });
 
-  console.log(guides);
-  // const guides = [
-  //   { id: 1, name: "Rafi" },
-  //   { id: 2, name: "Safi" },
-  //   { id: 3, name: "Kafi" },
-  // ];
-
   const [tourDate, setTourDate] = useState(new Date());
   const [selectedGuide, setSelectedGuide] = useState("");
+  const guide = guides.find((guide) => guide.email === selectedGuide);
+  const guideInfo = {guideName:guide?.name, guideEmail: guide?.email}
 
   //   const formatedDate = tourDate.toISOString() ;
   const handleSubmit = async (e) => {
@@ -46,7 +41,7 @@ const PackageDetails = () => {
       tourist: user?.displayName,
       toristEmail: user?.email,
       date: tourDate.toISOString(),
-      guideInfo: selectedGuide,
+      guideInfo,
       status: "Pending",
     };
     console.table(bookingDetails);
@@ -80,7 +75,6 @@ const PackageDetails = () => {
         `,
         cancelButtonAriaLabel: "Thumbs down",
       });
-      
     } catch (err) {
       console.log(err);
     }

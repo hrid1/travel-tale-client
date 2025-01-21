@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import TouristMenu from "../components/dashboard/TouristMenu";
 import AdminMenu from "../components/dashboard/AdminMenu";
 import GuideMenu from "../components/dashboard/GuideMenu";
@@ -7,6 +7,7 @@ import useRole from "../hooks/useRole";
 import { TiThMenu } from "react-icons/ti";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
+import logo from "../assets/travel-tale.png";
 
 const Dashboard = () => {
   const [role] = useRole();
@@ -92,7 +93,10 @@ const Dashboard = () => {
           <div className="min-h-screen bg-green-600/90 w-60  text-white  flex flex-col justify-between">
             {/* logo & name */}
             <div className="h-14">
-              logo
+              <Link to="/" className="flex items-center  mt-4 pl-4">
+                <img className="w-12 h-12" src={logo} alt="logo" />
+                <h2 className="font-semibold">Travel Tale</h2>
+              </Link>
               <label
                 htmlFor="my-drawer-2"
                 className="font-bold rounded drawer-button md:hidden right-0 btn btn-sm  absolute bg-green-600 hover:bg-green-600 text-white"

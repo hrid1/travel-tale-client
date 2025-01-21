@@ -21,7 +21,7 @@ import ManageStories from "../pages/Dashboard/common/ManageStories";
 import UpdateStories from "../pages/Dashboard/common/UpdateStories";
 import Trips from "../pages/Trips/Trips";
 import AssignedTours from "../pages/Dashboard/Guide/AssignedTours";
-import Payment from "../pages/Dashboard/common/Payment";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -112,7 +112,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "payment",
+        path: "payment/:id",
         element: <Payment/>
       },
       // for tourist

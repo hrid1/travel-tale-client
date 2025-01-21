@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import dayjs from "dayjs";
 
@@ -32,9 +32,9 @@ const MyBookings = () => {
   });
 
   // Handle payment redirection
-  const handlePay = (bookingId) => {
-    navigate(`/payment/${bookingId}`);
-  };
+  // const handlePay = (bookingId) => {
+  //   navigate(`/payment/${bookingId}`);
+  // };
 
   const handleCancel = (id) => {
     // console.log(id);
@@ -49,7 +49,7 @@ const MyBookings = () => {
   };
 
   if (isLoading) return <Spiner />;
-  
+
   return (
     <div className="container mx-auto py-10 px-4">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">My Bookings</h2>
@@ -75,12 +75,14 @@ const MyBookings = () => {
               <td className="py-2 px-4 border">{booking?.price}</td>
               <td className="py-2 px-4 border">{booking?.status}</td>
               <td className="py-2 px-4 border space-x-2">
-                <button
-                  onClick={() => handlePay(booking?._id)}
+               <Link to={`/dashboard/payment/${booking._id}`}>
+               <button
+                  // onClick={() => handlePay(booking?._id)}
                   className="bg-green-500 text-white  rounded-lg hover:bg-green-600 btn btn-sm"
                 >
                   Pay
                 </button>
+               </Link>
                 {booking?.status === "Pending" && (
                   <>
                     <button

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ImSpinner9 } from "react-icons/im";
+
 import { Link, useNavigate } from "react-router-dom";
 import { saveUser, uploadImageToBB } from "../../../api/utilis";
 import useAuth from "../../../hooks/useAuth";
@@ -8,11 +10,13 @@ import toast from "react-hot-toast";
 const Register = () => {
   const { createUser, updateUserInfo } = useAuth();
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   // handle register
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const form = e.target;
     const username = form.username.value;
     const email = form.email.value;
@@ -147,8 +151,15 @@ const Register = () => {
             <button
               type="submit"
               className="w-full px-4 py-2 mt-6 text-white bg-gradient-to-r from-green-400 to-green-600 rounded-lg  font-semibold"
+              disabled={loading}
             >
-              Register
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <ImSpinner9 className="text-lg animate-spin " />
+                </span>
+              ) : (
+                <span>Register</span>
+              )}
             </button>
           </form>
           <div className="flex items-center justify-between mt-4">

@@ -19,6 +19,7 @@ import TourGuideProfile from "../pages/TourGuideProfile/TourGuideProfile";
 import AddStory from "../pages/Dashboard/common/AddStory";
 import ManageStories from "../pages/Dashboard/common/ManageStories";
 import UpdateStories from "../pages/Dashboard/common/UpdateStories";
+import Trips from "../pages/Trips/Trips";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
             <Community />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/trips",
+        element: <Trips />,
       },
     ],
   },

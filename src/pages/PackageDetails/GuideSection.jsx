@@ -18,7 +18,7 @@ const GuideSection = () => {
   return (
     <div>
       <p>Guides: {guides.length}</p>
-      <section className="p-6 bg-gray-100">
+      <section className="p-6 bg-">
         <h2 className="text-3xl font-bold text-center mb-8">Our Tour Guides</h2>
         <div className=" gap-8">
           <Marquee pauseOnHover={true}>
@@ -26,7 +26,7 @@ const GuideSection = () => {
               {guides.map((guide, index) => (
                 <div
                   key={index}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden w-80 mx-4 relative flex flex-col justify-between text-center"
+                  className="bg-orange-100/70 shadow-lg rounded-lg overflow-hidden w-80 mx-4 relative flex flex-col justify-between text-center"
                 >
                   <img
                     src={guide.image}

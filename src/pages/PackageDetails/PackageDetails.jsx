@@ -9,17 +9,30 @@ import { Gallery } from "react-grid-gallery";
 import ImageGallery from "../../components/ImageGalary";
 import TourPlan from "../../components/dashboard/TourPlan";
 import GuideSection from "./GuideSection";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import UseAxiosPublic from "../../hooks/UseAxiosPublic";
 
 const PackageDetails = () => {
   const packageData = useLoaderData();
   const { user } = useAuth();
+  const axiosPublic = UseAxiosPublic();
 
-  console.log(packageData);
-  const guides = [
-    { id: 1, name: "Rafi" },
-    { id: 2, name: "Safi" },
-    { id: 3, name: "Kafi" },
-  ];
+  // console.log(packageData);
+  const { data: guides = [] } = useQuery({
+    queryKey: ["guide"],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get("/users/guide");
+      return data;
+    },
+  });
+
+  console.log(guides);
+  // const guides = [
+  //   { id: 1, name: "Rafi" },
+  //   { id: 2, name: "Safi" },
+  //   { id: 3, name: "Kafi" },
+  // ];
 
   const [tourDate, setTourDate] = useState(new Date());
   const [selectedGuide, setSelectedGuide] = useState("");
@@ -44,7 +57,30 @@ const PackageDetails = () => {
         `${import.meta.env.VITE_API_URL}/booking`,
         bookingDetails
       );
-      toast.success("Booking Successful!");
+      Swal.fire({
+        title: "<strong>Booking Successful!</strong>",
+        icon: "success", // Fixed typo
+        html: `
+          <a 
+            href="/dashboard/my-bookings" 
+            class="text-green-500 text-xl font-bold underline hover:text-green-600"
+            autofocus
+          >
+            Your Orders
+          </a>
+        `,
+        showCloseButton: true,
+        focusConfirm: false,
+        confirmButtonText: `
+          <i class="fa fa-thumbs-up"></i> Great!
+        `,
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: `
+          <i class="fa fa-thumbs-down"></i>
+        `,
+        cancelButtonAriaLabel: "Thumbs down",
+      });
+      
     } catch (err) {
       console.log(err);
     }
@@ -62,12 +98,6 @@ const PackageDetails = () => {
       </section>
       {/* pkg details */}
       <section className="max-w-5xl mx-auto p-6 bg-orange-100/40 shadow-md rounded-lg">
-        {/* <img
-          src={packageData.images[0]}
-          alt={packageData.tripTitle}
-          className="w-full h-64 object-cover rounded-md"
-        /> */}
-
         <div className="mt-6">
           <p className="text-green-500 uppercase text-sm font-bold">
             {packageData.tourType}
@@ -98,7 +128,6 @@ const PackageDetails = () => {
       {/* guide info */}
 
       <section>
-        {" "}
         <GuideSection />
       </section>
       {/* booking form */}
@@ -197,6 +226,7 @@ const PackageDetails = () => {
                 <select
                   id="guide"
                   name="guide"
+                  required
                   value={selectedGuide}
                   onChange={(e) => setSelectedGuide(e.target.value)}
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md"
@@ -204,8 +234,8 @@ const PackageDetails = () => {
                   <option value="">Select a Guide</option>
 
                   {guides.map((guide) => (
-                    <option key={guide.id} value={guide.name}>
-                      {guide.name}
+                    <option key={guide?._id} value={guide?.email}>
+                      {guide?.name}
                     </option>
                   ))}
                 </select>

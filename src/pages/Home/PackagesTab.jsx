@@ -16,7 +16,7 @@ const PackagesTab = () => {
     },
   });
 
-  console.log(packages)
+  console.log(packages);
   if (isLoading) return <CardsSkeleto />;
 
   return (

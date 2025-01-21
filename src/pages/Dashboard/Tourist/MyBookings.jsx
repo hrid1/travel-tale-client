@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spiner from "../../../components/Spiner";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const MyBookings = () => {
   //   const [bookings, setBookings] = useState([]);
@@ -14,13 +15,15 @@ const MyBookings = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   // load data
-  const { data: bookings = [], isLoading } = useQuery({
+  const {
+    data: bookings = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
       try {
-        const { data } = await axiosSecure.get(
-          `/booking/${user?.email}`
-        );
+        const { data } = await axiosSecure.get(`/booking/${user?.email}`);
         return data;
       } catch (err) {
         console.log(err);
@@ -33,20 +36,16 @@ const MyBookings = () => {
     navigate(`/payment/${bookingId}`);
   };
 
-  // Handle cancellation
-  //   const handleCancel = async (bookingId) => {
-  //     try {
-  //       await axios.delete(`/api/bookings/${bookingId}`); // Replace with your delete API endpoint
-  //       setBookings((prevBookings) =>
-  //         prevBookings.filter((booking) => booking._id !== bookingId)
-  //       );
-  //       alert("Booking canceled successfully");
-  //     } catch (error) {
-  //       console.error("Failed to cancel booking", error);
-  //       alert("Failed to cancel booking");
-  //     }
-  //   };
-
+  const handleCancel = (id) => {
+    // console.log(id);
+    try {
+      axiosSecure.delete(`/booking/${id}`);
+      toast.success("Booking Cancel!");
+    } catch (err) {
+      console.log(err);
+    }
+    refetch();
+  };
   if (isLoading) return <Spiner />;
   return (
     <div className="container mx-auto py-10 px-4">
@@ -82,7 +81,7 @@ const MyBookings = () => {
                 {booking?.status === "Pending" && (
                   <>
                     <button
-                      //   onClick={() => handleCancel(booking._id)}
+                      onClick={() => handleCancel(booking._id)}
                       className="bg-red-500 text-white btn rounded-lg hover:bg-red-600 btn-sm"
                     >
                       Cancel

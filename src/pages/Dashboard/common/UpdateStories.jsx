@@ -51,8 +51,8 @@ const UpdateStories = () => {
   if (isLoading) return <Spiner />;
   return (
     <div>
-      <h2>Update your story</h2>
-      <p>{story?.title}</p>
+      <h2 className="text-2xl font-bold text-center my-4">Update your story</h2>
+      <p className="text-lg text-green-700 font-semibold text-center mb-6">{story?.title}</p>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mb-6 p-2">
         {story?.images?.map((img, index) => (

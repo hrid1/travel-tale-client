@@ -22,12 +22,15 @@ import UpdateStories from "../pages/Dashboard/common/UpdateStories";
 import Trips from "../pages/Trips/Trips";
 import AssignedTours from "../pages/Dashboard/Guide/AssignedTours";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import GuideRoute from "./GuideRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AboutDeveloper from "../pages/AboutDeveloper/AboutDeveloper";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <h2>Error page</h2>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
@@ -44,7 +47,7 @@ export const router = createBrowserRouter([
           fetch(`${import.meta.env.VITE_API_URL}/package/${params.id}`),
       },
       {
-        path: "user/guide/:email", 
+        path: "user/guide/:email",
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/user/guide/${params.email}`),
         element: (
@@ -64,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "/trips",
         element: <Trips />,
+      },
+      {
+        path: "/aboutDeveloper",
+        element: <AboutDeveloper/>,
       },
     ],
   },
@@ -113,7 +120,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "payment/:id",
-        element: <Payment/>
+        element: <Payment />,
       },
       // for tourist
       {
@@ -151,15 +158,33 @@ export const router = createBrowserRouter([
       // for guide
       {
         path: "my-assigned-tours",
-        element: <AssignedTours />,
+        element: (
+          <PrivateRoute>
+            <GuideRoute>
+              <AssignedTours />
+            </GuideRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "guide-manage-stories",
-        element: <ManageStories />,
+        element: (
+          <PrivateRoute>
+            <GuideRoute>
+              <ManageStories />
+            </GuideRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "guide-add-stories",
-        element: <AddStory />,
+        element: (
+          <PrivateRoute>
+            <GuideRoute>
+              <AddStory />
+            </GuideRoute>
+          </PrivateRoute>
+        ),
       },
 
       // for admin

@@ -27,7 +27,9 @@ const Navber = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "font-bold underline text-green-500  rounded-sm p-2" : "p-2"
+          isActive
+            ? "font-bold underline text-green-500  rounded-sm p-2"
+            : "p-2"
         }
         to="/community"
       >
@@ -39,7 +41,7 @@ const Navber = () => {
             ? "font-bold underline text-green-500 0  rounded-sm p-2"
             : "p-2"
         }
-        to="/about"
+        to="/aboutDeveloper"
       >
         About
       </NavLink>
@@ -58,9 +60,9 @@ const Navber = () => {
 
   return (
     <div>
-      <div className="navbar bg-orange-100 backdrop-blur-md">
+      <div className="navbar bg-orange-100 backdrop-blur-md relative z-30">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown z-50">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -79,21 +81,20 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
+              className="menu menu-sm dropdown-content bg-orange-100 rounded-box z-40 mt-3 w-52 p-2 shadow "
             >
               {navLinks}
             </ul>
           </div>
-          <Link
-            to="/"
-            className="flex items-center justify-center  text-xl"
-          >
+          <Link to="/" className="flex items-center justify-center  text-xl">
             <img className="w-12 h-12" src={logo} alt="" />
             <span className="font-extrabold ">Travel Tale</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-lg font-medium">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1 text-lg font-medium">
+            {navLinks}
+          </ul>
         </div>
         <div className="navbar-end">
           {user ? (
@@ -110,7 +111,7 @@ const Navber = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w- p-2 shadow space-y-1"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[5] mt-3 w- p-2 shadow space-y-1"
                 >
                   <li>
                     <Link to="/dashboard" className="px-0 py-0.5">

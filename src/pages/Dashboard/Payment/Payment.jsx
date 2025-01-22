@@ -32,7 +32,12 @@ const Payment = () => {
 
   return (
     <div>
-      <h3>Payment page</h3>
+      <div className="text-center py-8">
+        <h3 className="text-2xl font-bold text-teal-600">Payment Page</h3>
+        <p className="text-gray-500 mt-2">
+          Easily and securely complete your payment to confirm your order.
+        </p>
+      </div>
 
       <div>
         <Elements stripe={stripePromise}>

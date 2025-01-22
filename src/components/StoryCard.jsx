@@ -1,6 +1,17 @@
 import { FacebookShareButton, FacebookIcon } from "react-share";
+import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const StoryCard = ({ story }) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleShareClick = () => {
+    if (!user) {
+      navigate("/login");
+    }
+  };
+
   return (
     <div>
       <div
@@ -34,14 +45,19 @@ const StoryCard = ({ story }) => {
 
         {/* Share Button */}
         <div className="mt-4 right-2.5 bottom-2 absolute">
-          <FacebookShareButton
-           url={`${import.meta.env.VITE_API_URL}/story/${story._id}`}
-
-            quote={story.title}
-            hashtag="#travel"
-          >
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
+          {user ? (
+            <FacebookShareButton
+              url={`${import.meta.env.VITE_API_URL}/story/${story._id}`}
+              quote="hi dos5t"
+              hashtag="#travel"
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+          ) : (
+            <button onClick={handleShareClick}>
+              <FacebookIcon size={32} round />
+            </button>
+          )}
         </div>
       </div>
     </div>

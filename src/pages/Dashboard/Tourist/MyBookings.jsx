@@ -68,21 +68,38 @@ const MyBookings = () => {
           {bookings.map((booking) => (
             <tr key={booking._id} className="text-center">
               <td className="py-2 px-4 border">{booking?.package}</td>
-              <td className="py-2 px-4 border">{booking?.guideInfo?.guideName}</td>
+              <td className="py-2 px-4 border">
+                {booking?.guideInfo?.guideName}
+              </td>
               <td className="py-2 px-4 border">
                 {dayjs(booking?.date).format("DD-MM-YYYY")}
               </td>
               <td className="py-2 px-4 border">{booking?.price}</td>
-              <td className="py-2 px-4 border">{booking?.status}</td>
-              <td className="py-2 px-4 border space-x-2">
-               <Link to={`/dashboard/payment/${booking._id}`}>
-               <button
-                  // onClick={() => handlePay(booking?._id)}
-                  className="bg-green-500 text-white  rounded-lg hover:bg-green-600 btn btn-sm"
+              <td className="py-2 px-4 border ">
+
+                <span
+                  className={`text-xs p-1 rounded-md ${
+                    booking.status === "Pending"
+                      ? "badge-warning"
+                      : booking.status === "Review"
+                      ? "badge-info"
+                      : booking.status === "Accepted"
+                      ? "badge-success"
+                      : "badge-error"
+                  }`}
                 >
-                  Pay
-                </button>
-               </Link>
+                  {booking?.status}
+                </span>
+              </td>
+              <td className="py-2 px-4 border space-x-2">
+                <Link to={`/dashboard/payment/${booking._id}`}>
+                  <button
+                    // onClick={() => handlePay(booking?._id)}
+                    className="bg-green-500 text-white  rounded-lg hover:bg-green-600 btn btn-sm"
+                  >
+                    Pay
+                  </button>
+                </Link>
                 {booking?.status === "Pending" && (
                   <>
                     <button

@@ -8,6 +8,7 @@ import { TiThMenu } from "react-icons/ti";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import logo from "../assets/travel-tale.png";
+import { FaHome, FaUsers, FaInfoCircle, FaSuitcase } from "react-icons/fa";
 
 const Dashboard = () => {
   const [role] = useRole();
@@ -24,45 +25,52 @@ const Dashboard = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold  underline text-green-600  rounded-sm p-2"
-            : "p-2 border rounded"
+            ? "font-bold underline text-green-600 rounded-sm p-2 flex items-center space-x-2"
+            : "p-2 border-b-2 rounded flex items-center space-x-2"
         }
         to="/"
       >
-        Home
+        <FaHome className="text-orange-200" />
+        <span>Home</span>
       </NavLink>
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-green-600  rounded-sm p-2"
-            : "p-2 border rounded"
+            ? "font-bold underline text-green-600 rounded-sm p-2 flex items-center space-x-2"
+            : "p-2 border-b-2 rounded flex items-center space-x-2"
         }
         to="/community"
       >
-        Community
+        <FaUsers className="text-orange-200" />
+        <span>Community</span>
       </NavLink>
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-green-600 0  rounded-sm p-2"
-            : "p-2 border rounded"
+            ? "font-bold underline text-green-600 rounded-sm p-2 flex items-center space-x-2"
+            : "p-2 border-b-2 rounded flex items-center space-x-2"
         }
         to="/about"
       >
-        About
+        <FaInfoCircle className="text-orange-200" />
+        <span>About</span>
       </NavLink>
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "font-bold underline text-green-600 0  rounded-sm p-2"
-            : "p-2 border rounded"
+            ? "font-bold underline text-green-600 rounded-sm p-2 flex items-center space-x-2"
+            : "p-2 border-b-2 rounded flex items-center space-x-2"
         }
         to="/trips"
       >
-        Trips
+        <FaSuitcase className="text-orange-200" />
+        <span>Trips</span>
       </NavLink>
-      <button onClick={handleLogout} className="btn btn-sm">
-        Logout
+      <button
+        onClick={handleLogout}
+        className="btn btn-sm flex items-center space-x-2"
+      >
+        <span>Logout</span>
       </button>
     </div>
   );
@@ -90,7 +98,7 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="min-h-screen bg-green-600/90 w-60  text-white  flex flex-col justify-between">
+          <div className="min-h-screen bg-green-700/90 w-60  text-white  flex flex-col justify-between">
             {/* logo & name */}
             <div className="h-14">
               <Link to="/" className="flex items-center  mt-4 pl-4">
@@ -99,7 +107,7 @@ const Dashboard = () => {
               </Link>
               <label
                 htmlFor="my-drawer-2"
-                className="font-bold rounded drawer-button md:hidden right-0 btn btn-sm  absolute bg-green-600 hover:bg-green-600 text-white"
+                className="font-bold rounded drawer-button md:hidden right-0.5 top-0.5 btn btn-sm  absolute bg-green-600 hover:bg-green-600 text-white"
               >
                 X
               </label>

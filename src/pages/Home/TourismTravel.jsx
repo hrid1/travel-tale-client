@@ -7,6 +7,7 @@ import PackagesTab from "./PackagesTab";
 import CardsSkeleto from "../../components/CardsSkeleto";
 import UseAxiosPublic from "../../hooks/UseAxiosPublic";
 import { Link } from "react-router-dom";
+import TitleInfo from "../../components/common/TitleInfo";
 
 const TourismTravelGuide = () => {
   const axiosPublic = UseAxiosPublic();
@@ -23,11 +24,12 @@ const TourismTravelGuide = () => {
   // console.log(pakages);
   if (isLoading) return <CardsSkeleto />;
   return (
-    <section className="py-10 bg-gray-100">
+    <section id="tourism" className="py-10 bg-gray-100">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-          Tourism and Travel Guide
-        </h2>
+        <TitleInfo
+          title="Tourism and Travel Guide"
+          subtitle="Plan, Explore, and Make Memories That Last Forever."
+        ></TitleInfo>
         <Tabs>
           {/* Tab List */}
           <TabList className="flex justify-center space-x-6 border-b-2 border-gray-300 mb-6">
@@ -64,7 +66,7 @@ const TourismTravelGuide = () => {
                     <p className="text-sm text-gray-600">
                       Email: {guide?.email}
                     </p>
-                    <Link to={`user/guide/${guide?.email}`} >
+                    <Link to={`user/guide/${guide?.email}`}>
                       <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
                         View Profile
                       </button>

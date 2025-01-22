@@ -4,16 +4,17 @@ import TourismTravel from "./TourismTravel";
 import TouristStory from "./TouristStory";
 import Banner from "../../components/Banner";
 import FaqSection from "./FaqSection";
+import Contact from "./Contact";
 
 const Home = () => {
   return (
     <div>
-      
       <Banner></Banner>
       <Overview />
       <TourismTravel />
       <TouristStory />
-      <FaqSection/>
+      <FaqSection />
+      <Contact />
     </div>
   );
 };

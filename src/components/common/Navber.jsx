@@ -106,7 +106,7 @@ const Navber = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-10 rounded-full">
-                    <img alt="User Profile" src={user?.photoURL} />
+                    <img referrerPolicy="no-referrer" alt="User Profile" src={user?.photoURL} />
                   </div>
                 </div>
                 <ul

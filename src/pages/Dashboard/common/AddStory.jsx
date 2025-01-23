@@ -6,10 +6,12 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import Spiner from "../../../components/Spiner";
 import Spiner2 from "../../../components/Spiner2";
+import useRole from "../../../hooks/useRole";
 
 const AddStory = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const [role] = useRole();
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
   // Handle form submission
@@ -35,7 +37,12 @@ const AddStory = () => {
       toast.success("Update Story");
       setLoading(false);
       //   console.log(data)
-      navigate("/dashboard/guide-manage-stories");
+
+      if (role === "guide") {
+        navigate("/dashboard/guide-manage-stories");
+      } else {
+        navigate("/dashboard/tourist-manage-stories");
+      }
     } catch (err) {
       console.log(err);
     }

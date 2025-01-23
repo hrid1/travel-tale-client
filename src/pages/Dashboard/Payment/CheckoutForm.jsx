@@ -69,7 +69,7 @@ const CheckoutForm = ({ trip }) => {
       //save to the backend
       const payment = {
         name: trip?.tourist,
-        email: trip?.touristEmail,
+        email: trip?.toristEmail,
         bookingId: trip?._id,
         price: trip?.price,
         transaction_id: paymentIntent.id,

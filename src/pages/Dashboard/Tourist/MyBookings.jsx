@@ -76,7 +76,6 @@ const MyBookings = () => {
               </td>
               <td className="py-2 px-4 border">{booking?.price}</td>
               <td className="py-2 px-4 border ">
-
                 <span
                   className={`text-xs p-1 rounded-md ${
                     booking.status === "Pending"
@@ -96,6 +95,7 @@ const MyBookings = () => {
                   <button
                     // onClick={() => handlePay(booking?._id)}
                     className="bg-green-500 text-white  rounded-lg hover:bg-green-600 btn btn-sm"
+                    disabled={booking?.status !== "Pending"}
                   >
                     Pay
                   </button>

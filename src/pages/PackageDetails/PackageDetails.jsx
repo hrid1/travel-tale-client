@@ -12,11 +12,18 @@ import GuideSection from "./GuideSection";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/UseAxiosPublic";
+import Confetti from "react-confetti";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const PackageDetails = () => {
   const packageData = useLoaderData();
   const { user } = useAuth();
   const axiosPublic = UseAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
+  const [showConfeti, setShowConfetti] = useState(false);
+  const width = window.innerWidth;
 
   // console.log(packageData);
   const { data: guides = [] } = useQuery({
@@ -30,7 +37,7 @@ const PackageDetails = () => {
   const [tourDate, setTourDate] = useState(new Date());
   const [selectedGuide, setSelectedGuide] = useState("");
   const guide = guides.find((guide) => guide.email === selectedGuide);
-  const guideInfo = {guideName:guide?.name, guideEmail: guide?.email}
+  const guideInfo = { guideName: guide?.name, guideEmail: guide?.email };
 
   //   const formatedDate = tourDate.toISOString() ;
   const handleSubmit = async (e) => {
@@ -48,10 +55,11 @@ const PackageDetails = () => {
     // console.log(e.target.guide.value);
     // send to the server
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/booking`,
-        bookingDetails
-      );
+      // await axios.post(
+      //   `${import.meta.env.VITE_API_URL}/booking`,
+      //   bookingDetails
+      // );
+      const { data } = await axiosPublic.post("/booking", bookingDetails);
       Swal.fire({
         title: "<strong>Booking Successful!</strong>",
         icon: "success", // Fixed typo
@@ -63,8 +71,8 @@ const PackageDetails = () => {
           >
             Your Orders
           </a>
+          
         `,
-        showCloseButton: true,
         focusConfirm: false,
         confirmButtonText: `
           <i class="fa fa-thumbs-up"></i> Great!
@@ -75,6 +83,10 @@ const PackageDetails = () => {
         `,
         cancelButtonAriaLabel: "Thumbs down",
       });
+      console.log(data);
+      if (data.totalBookings) {
+        setShowConfetti(true);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -124,8 +136,20 @@ const PackageDetails = () => {
       <section>
         <GuideSection />
       </section>
+
+      {/* for confeti */}
+      <div className="flex items-center justify-center">
+        {showConfeti && (
+          <Confetti
+            width={width}
+            height={"2200"}
+            numberOfPieces={500}
+            gravity={0.2}
+          />
+        )}
+      </div>
       {/* booking form */}
-      <section>
+      <section className="relative ">
         <div className="max-w-5xl mx-auto p-6 bg-green-100 shadow-md rounded-lg my-4">
           <div className="">
             <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
@@ -202,7 +226,7 @@ const PackageDetails = () => {
                 <input
                   type="text"
                   id="price"
-                  value={packageData.price || ""}
+                  defaultValue={packageData.price || ""}
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                 />
               </div>
@@ -261,6 +285,22 @@ const PackageDetails = () => {
             </div>
           </form>
         </div>
+
+        {/* congrats div */}
+        {showConfeti && (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-orange-200 p-6 lg:p-8 rounded-lg shadow-lg text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
+              Congratulations! <br /> You Have Ordered 3 Packages.
+            </h2>
+
+            <button
+              onClick={() => setShowConfetti(false)}
+              className="mt-5 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg shadow-md transition-all"
+            >
+              Apply Discount
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );

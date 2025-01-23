@@ -16,7 +16,7 @@ const Contact = () => {
 
         <div className="flex flex-wrap">
           <form className="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">
-            <div className="mb-3 w-full">
+            <div className="mb-2 w-full">
               <label
                 className="block font-medium mb-[2px] text-green-700"
                 htmlFor="exampleInput90"
@@ -31,7 +31,7 @@ const Contact = () => {
               />
             </div>
 
-            <div className="mb-3 w-full">
+            <div className="mb-2 w-full">
               <label
                 className="block font-medium mb-[2px] text-green-700"
                 htmlFor="exampleInput90"
@@ -46,7 +46,7 @@ const Contact = () => {
               />
             </div>
 
-            <div className="mb-3 w-full">
+            <div className="mb-2 w-full">
               <label
                 className="block font-medium mb-[2px] text-green-700"
                 htmlFor="exampleInput90"

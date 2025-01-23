@@ -7,6 +7,8 @@ import useRole from "../../../hooks/useRole";
 import { ImSpinner3 } from "react-icons/im";
 import { uploadImageToBB } from "../../../api/utilis";
 import UseAxiosPublic from "../../../hooks/UseAxiosPublic";
+import toast from "react-hot-toast";
+import States from "../../../components/dashboard/States";
 
 const ManageProfile = () => {
   const navigate = useNavigate();
@@ -43,6 +45,7 @@ const ManageProfile = () => {
         name,
         image,
       });
+      toast.success("Profile Update Successfully!");
       // console.log(data);
     } catch (err) {
       console.log(err);
@@ -98,6 +101,11 @@ const ManageProfile = () => {
         )}
       </div>
 
+      {role !== "admin" && (
+        <section>
+          <States />
+        </section>
+      )}
       {/* Modal */}
       {isModalOpen && (
         <div className="min-h-screen w-full fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center mx-auto">

@@ -36,7 +36,7 @@ const ManageCandidate = () => {
       toast("👍 Request Accepted!");
       refetch();
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
   };
   //   manage reject
@@ -49,11 +49,11 @@ const ManageCandidate = () => {
           status: "Rejected",
         }
       );
-      console.log(data);
+  // console.log(data);
       toast("👎 Requested Rejected!");
       refetch();
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
   };
 

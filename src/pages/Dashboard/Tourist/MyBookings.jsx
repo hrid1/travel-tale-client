@@ -26,7 +26,7 @@ const MyBookings = () => {
         const { data } = await axiosSecure.get(`/booking/${user?.email}`);
         return data;
       } catch (err) {
-        console.log(err);
+    // console.log(err);
       }
     },
   });
@@ -43,7 +43,7 @@ const MyBookings = () => {
       toast.success("Booking Cancel!");
       refetch();
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
     refetch();
   };

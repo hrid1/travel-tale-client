@@ -1,7 +1,7 @@
 import React from "react";
 
 const TourPlan = ({ tourPlan }) => {
-  console.log(tourPlan);
+  // console.log(tourPlan);
   const plans = tourPlan.split(", ");
 
   return (

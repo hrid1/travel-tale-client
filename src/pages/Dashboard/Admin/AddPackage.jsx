@@ -21,7 +21,7 @@ const AddPackage = () => {
     const tourPlan = form.tourPlan.value;
     const imagesFile = form.photo.files;
     const images = await uploadImagesToBB(imagesFile);
-    console.log(imagesFile);
+// console.log(imagesFile);
     const formData = {
       tripTitle,
       tourType,
@@ -31,7 +31,7 @@ const AddPackage = () => {
       // imagesFile,
       tourPlan,
     };
-    console.log("Submitted Package Data:", formData);
+// console.log("Submitted Package Data:", formData);
     // Add logic to send data to the backend here
     try {
       const { data } = await axiosSecure.post(`/package`, formData);
@@ -39,7 +39,7 @@ const AddPackage = () => {
       toast.success("Package Succesfully Added!");
       setLoading(false);
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
 
     // alert("Package added successfully!");

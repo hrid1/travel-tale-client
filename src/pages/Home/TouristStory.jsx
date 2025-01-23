@@ -10,7 +10,7 @@ const TouristStory = () => {
   const axiosPublic = UseAxiosPublic();
   const navigate = useNavigate();
   const [role] = useRole();
-  console.log(role);
+  // console.log(role);
   const { data: stories, isLoading } = useQuery({
     queryKey: ["story"],
     queryFn: async () => {

@@ -31,7 +31,7 @@ const JoinAsTourGuide = () => {
         status: "Requested",
         info: formData,
       });
-      console.log(data);
+  // console.log(data);
       Swal.fire({
         title: "Good job!",
         text: "Successfully Applied to become a Guide!",

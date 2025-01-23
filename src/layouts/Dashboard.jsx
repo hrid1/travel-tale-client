@@ -13,7 +13,7 @@ import { FaHome, FaUsers, FaInfoCircle, FaSuitcase } from "react-icons/fa";
 const Dashboard = () => {
   const [role] = useRole();
   const { logOut } = useAuth();
-  console.log(role);
+  // console.log(role);
 
   const handleLogout = () => {
     logOut();

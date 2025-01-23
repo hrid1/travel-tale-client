@@ -19,7 +19,7 @@ const ManageStories = () => {
     },
   });
 
-  console.log(stories);
+  // console.log(stories);
 
   // Handle delete story
   const handleDelete = async (id) => {
@@ -54,7 +54,7 @@ const ManageStories = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
-      <h2 className="text-2xl font-bold text-cyan-600 mb-6">Manage Stories</h2>
+      <h2 className="text-2xl font-bold text-green`-600 mb-6">Manage Stories</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {stories.length > 0 ? (
           stories.map((story) => (

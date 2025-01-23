@@ -19,11 +19,11 @@ const Login = () => {
     // user login
     try {
       const result = await loginUser(email, password);
-      console.log(result);
+  // console.log(result);
       toast.success("Login Successful !");
       navigate(from, { replace: true });
     } catch (err) {
-      console.log(err);
+  // console.log(err);
       toast(err?.message);
     }
   };
@@ -37,7 +37,7 @@ const Login = () => {
       toast.success("Login Successful!");
       navigate(from, { replace: true });
     } catch (err) {
-      console.log(err);
+  // console.log(err);
       toast.error(err?.message);
     }
   };

@@ -37,7 +37,7 @@ const ManageProfile = () => {
     const name = e.target.username.value || user?.displayName;
     const imageFile = e.target.photo.files[0];
     const image = (await uploadImageToBB(imageFile)) || user?.photoUrl;
-    console.log(name, image);
+// console.log(name, image);
 
     try {
       await updateUserInfo(name, image);
@@ -48,7 +48,7 @@ const ManageProfile = () => {
       toast.success("Profile Update Successfully!");
       // console.log(data);
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
 
     setTimeout(() => {
@@ -101,7 +101,7 @@ const ManageProfile = () => {
         )}
       </div>
 
-      {role !== "admin" && (
+      {role === "admin" && (
         <section>
           <States />
         </section>

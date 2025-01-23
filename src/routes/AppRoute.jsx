@@ -25,12 +25,13 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import GuideRoute from "./GuideRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AboutDeveloper from "../pages/AboutDeveloper/AboutDeveloper";
+import TouristRoute from "./TouristRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -70,7 +71,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/aboutDeveloper",
-        element: <AboutDeveloper/>,
+        element: <AboutDeveloper />,
       },
     ],
   },
@@ -127,7 +128,9 @@ export const router = createBrowserRouter([
         path: "my-bookings",
         element: (
           <PrivateRoute>
-            <MyBookings />
+            <TouristRoute>
+              <MyBookings />
+            </TouristRoute>
           </PrivateRoute>
         ),
       },
@@ -135,7 +138,9 @@ export const router = createBrowserRouter([
         path: "tourist-manage-stories",
         element: (
           <PrivateRoute>
-            <ManageStories />
+            <TouristRoute>
+              <ManageStories />
+            </TouristRoute>
           </PrivateRoute>
         ),
       },
@@ -143,7 +148,9 @@ export const router = createBrowserRouter([
         path: "tourist-add-stories",
         element: (
           <PrivateRoute>
-            <AddStory />
+            <TouristRoute>
+              <AddStory />
+            </TouristRoute>
           </PrivateRoute>
         ),
       },
@@ -151,7 +158,9 @@ export const router = createBrowserRouter([
         path: "join-guide",
         element: (
           <PrivateRoute>
-            <JoinAsTourGuide />
+            <TouristRoute>
+              <JoinAsTourGuide />
+            </TouristRoute>
           </PrivateRoute>
         ),
       },

@@ -21,7 +21,7 @@ const States = () => {
     },
   });
 
-  console.log(states);
+  // console.log(states);
   const {
     totalPayment,
     totalGuides,

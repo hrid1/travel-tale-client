@@ -16,7 +16,7 @@ const PackagesTab = () => {
     },
   });
 
-  console.log(packages);
+  // console.log(packages);
   if (isLoading) return <CardsSkeleto />;
 
   return (
@@ -25,7 +25,7 @@ const PackagesTab = () => {
         {packages?.map((pkg) => (
           <div
             key={pkg._id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col"
+            className="bg-orange-50 rounded-lg shadow-lg overflow-hidden flex flex-col"
           >
             {/* Image Section */}
             <img

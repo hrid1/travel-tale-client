@@ -31,7 +31,7 @@ const Register = () => {
     }
 
     const imageUrl = await uploadImageToBB(image);
-    console.log(username, email, password, imageUrl);
+// console.log(username, email, password, imageUrl);
 
     try {
       // create User
@@ -39,13 +39,13 @@ const Register = () => {
       // save name and photo
       await updateUserInfo(username, imageUrl);
       // const userInfo = { name: username, email: email, image: imageUrl };
-      console.log(result);
+  // console.log(result);
       await saveUser(result?.user);
 
       toast.success("Register Successful!");
       navigate("/");
     } catch (err) {
-      console.log(err);
+  // console.log(err);
       toast.error(err.message);
     }
   };

@@ -16,7 +16,7 @@ const TourismTravelGuide = () => {
     queryKey: ["guide"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/users/guide?limit=true");
-      console.log(data);
+  // console.log(data);
       return data;
     },
   });

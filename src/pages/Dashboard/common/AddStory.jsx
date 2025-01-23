@@ -31,7 +31,7 @@ const AddStory = () => {
       owner: user.email,
     };
 
-    console.log("Story Data Submitted:", storyData);
+// console.log("Story Data Submitted:", storyData);
     try {
       const { data } = await axiosSecure.post("/stories", storyData);
       toast.success("Update Story");
@@ -44,7 +44,7 @@ const AddStory = () => {
         navigate("/dashboard/tourist-manage-stories");
       }
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
 
     // navigate("/manage-stories");

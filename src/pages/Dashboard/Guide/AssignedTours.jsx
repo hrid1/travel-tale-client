@@ -12,7 +12,7 @@ const AssignedTours = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  console.log(user);
+  // console.log(user);
 
   const {
     data: tours = [],
@@ -26,24 +26,6 @@ const AssignedTours = () => {
     },
   });
 
-  //   const [tours, setTours] = useState([
-  //     {
-  //       id: 1,
-  //       packageName: "Sundarbans Adventure",
-  //       touristName: "John Doe",
-  //       tourDate: "2025-02-15",
-  //       tourPrice: "$300",
-  //       status: "Review", // Status: Pending, In Review, Accepted, Rejected
-  //     },
-  //     {
-  //       id: 2,
-  //       packageName: "Cox's Bazar Getaway",
-  //       touristName: "Jane Smith",
-  //       tourDate: "2025-02-20",
-  //       tourPrice: "$200",
-  //       status: "Pending",
-  //     },
-  //   ]);
 
   // Handle Accept
   const handleAccept = async (id) => {
@@ -53,23 +35,11 @@ const AssignedTours = () => {
       });
       //   console.log(data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
     refetch();
   };
 
-  // Handle Reject
-  // const handleReject = async (id) => {
-  //   try {
-  //     const data = await axiosSecure.patch(`booking/status/${id}`, {
-  //       status: "Rejected",
-  //     });
-  //     //   console.log(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  //   refetch();
-  // };
 
 
   const handleReject = async (id) => {
@@ -97,7 +67,7 @@ const AssignedTours = () => {
     });
   };
 
-  console.log(tours);
+  // console.log(tours);
   if (isLoading) return <Spiner />;
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
@@ -122,7 +92,7 @@ const AssignedTours = () => {
             </thead>
             <tbody>
               {tours?.map((tour, index) => (
-                <tr key={tour.id} className="text-">
+                <tr key={tour._id} className="text-">
                   <td className="py-2 px-4">{index + 1}</td>
                   <td className="py-2 px-4">{tour?.package}</td>
                   <td className="py-2 px-4">{tour?.tourist}</td>
@@ -155,13 +125,15 @@ const AssignedTours = () => {
                       disabled={tour.status !== "Review"}
                       onClick={() => handleAccept(tour._id)}
                     >
-                      <MdCheckCircle  />
+                      <MdCheckCircle />
                       Accept
                     </button>
                     <button
                       className="btn btn-sm bg-red-500 hover:bg-red-600 text-white"
                       onClick={() => handleReject(tour._id)}
-                      disabled={tour.status !== "Pending"}
+                      disabled={
+                        tour.status === "Accepted" || tour.status === "Rejected"
+                      }
                     >
                       <MdCancel className="text-xl" />
                     </button>

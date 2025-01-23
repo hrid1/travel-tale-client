@@ -25,7 +25,7 @@ const UpdateStories = () => {
 
   const handleAddImages = async (e) => {
     const files = e.target.files;
-    console.log(files);
+// console.log(files);
     const newImagesLinks = await uploadImagesToBB(files);
 
     try {
@@ -33,19 +33,19 @@ const UpdateStories = () => {
         images: newImagesLinks,
       });
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
     refetch();
   };
 
   const handleRemoveImage = async (image) => {
-    console.log(image);
+// console.log(image);
     try {
       await axiosSecure.patch(`/story/${id}/remove-image`, {
         image,
       });
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
     refetch();
   };
@@ -59,13 +59,13 @@ const UpdateStories = () => {
       title,
       description,
     };
-    console.log(storyInfo);
+// console.log(storyInfo);
     try {
       const { data } = axiosSecure.patch(`/story/${id}`, storyInfo);
-      console.log(data);
+  // console.log(data);
       toast.success("Story Updated!");
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
   };
   if (isLoading) return <Spiner />;

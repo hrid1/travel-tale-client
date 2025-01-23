@@ -19,7 +19,7 @@ const CheckoutForm = ({ trip }) => {
       axiosSecure
         .post("/create-payment-intent", { price: totalPrice })
         .then((res) => {
-          console.log(res.data.clientSecret);
+      // console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         });
     }
@@ -41,10 +41,10 @@ const CheckoutForm = ({ trip }) => {
       card,
     });
     if (error) {
-      console.log("Payment Error", error);
+  // console.log("Payment Error", error);
       setError(error);
     } else {
-      console.log("Payment Method", paymentMethod);
+  // console.log("Payment Method", paymentMethod);
       setError("");
     }
 
@@ -60,9 +60,9 @@ const CheckoutForm = ({ trip }) => {
       });
 
     if (confirmError) {
-      console.log("confirm error", confirmError);
+  // console.log("confirm error", confirmError);
     } else {
-      console.log(paymentIntent);
+  // console.log(paymentIntent);
       if (paymentIntent.status === "succeeded") {
         setTransactionId(paymentIntent.id);
       }
@@ -78,7 +78,7 @@ const CheckoutForm = ({ trip }) => {
 
       try {
         const { data } = await axiosSecure.post("/payments", payment);
-        console.log(data);
+    // console.log(data);
         if (data?.insertedId) {
           Swal.fire({
             icon: "success",
@@ -87,7 +87,7 @@ const CheckoutForm = ({ trip }) => {
           });
         }
       } catch (err) {
-        console.log(err);
+    // console.log(err);
       }
 
       try {
@@ -96,7 +96,7 @@ const CheckoutForm = ({ trip }) => {
         });
         //   console.log(data);
       } catch (err) {
-        console.log(err);
+    // console.log(err);
       }
     }
   };

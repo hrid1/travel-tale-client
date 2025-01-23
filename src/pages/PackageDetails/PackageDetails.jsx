@@ -15,13 +15,15 @@ import UseAxiosPublic from "../../hooks/UseAxiosPublic";
 import Confetti from "react-confetti";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useWindowSize from "../../hooks/useWindowSize";
+import useRole from "../../hooks/useRole";
 
 const PackageDetails = () => {
   const packageData = useLoaderData();
   const { user } = useAuth();
   const axiosPublic = UseAxiosPublic();
   const axiosSecure = useAxiosSecure();
-
+  const [role] = useRole();
+  // console.log(role);
   const [showConfeti, setShowConfetti] = useState(false);
   const width = window.innerWidth;
 
@@ -51,14 +53,11 @@ const PackageDetails = () => {
       guideInfo,
       status: "Pending",
     };
-    console.table(bookingDetails);
+    // console.table(bookingDetails);
     // console.log(e.target.guide.value);
     // send to the server
     try {
-      // await axios.post(
-      //   `${import.meta.env.VITE_API_URL}/booking`,
-      //   bookingDetails
-      // );
+      
       const { data } = await axiosPublic.post("/booking", bookingDetails);
       Swal.fire({
         title: "<strong>Booking Successful!</strong>",
@@ -83,12 +82,13 @@ const PackageDetails = () => {
         `,
         cancelButtonAriaLabel: "Thumbs down",
       });
-      console.log(data);
-      if (data.totalBookings) {
+  // console.log(data);
+      if (data.totalBookings >= 3) {
         setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 3000); 
       }
     } catch (err) {
-      console.log(err);
+  // console.log(err);
     }
   };
 
@@ -277,8 +277,9 @@ const PackageDetails = () => {
             {/* Book Now Button */}
             <div className="mb-4">
               <button
+                disabled={role !== "tourist"}
                 type="submit"
-                className="w-5/6 block mt-4 bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 mx-auto"
+                className="w-5/6 block mt-4 bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 mx-auto disabled:cursor-not-allowed"
               >
                 Book Now
               </button>

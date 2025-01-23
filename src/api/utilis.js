@@ -14,7 +14,7 @@ export const uploadImageToBB = async (image) => {
     );
     return data.data.url;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 
@@ -37,7 +37,7 @@ export const uploadImagesToBB = async (images) => {
     }
     return uploadedUrls;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 

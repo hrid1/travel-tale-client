@@ -11,13 +11,13 @@ const ForgotPassword = () => {
     e.preventDefault();
     const email = e.target.email.value;
     document.getElementById("my_modal").showModal();
-    console.log(email);
+// console.log(email);
     resetPassword(email)
       .then((res) => {
         toast.success("Password Reset Email Sent!");
       })
       .catch((error) => {
-        console.log(error);
+    // console.log(error);
         toast.error(error.message);
       });
   };

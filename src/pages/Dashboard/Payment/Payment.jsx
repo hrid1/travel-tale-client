@@ -23,7 +23,7 @@ const Payment = () => {
         const { data } = await axiosSecure.get(`/booking/trip/${id}`);
         return data;
       } catch (err) {
-        console.log(err);
+    // console.log(err);
       }
     },
   });

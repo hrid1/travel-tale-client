@@ -37,7 +37,7 @@ const ManageProfile = () => {
     const name = e.target.username.value || user?.displayName;
     const imageFile = e.target.photo.files[0];
     const image = (await uploadImageToBB(imageFile)) || user?.photoUrl;
-// console.log(name, image);
+    // console.log(name, image);
 
     try {
       await updateUserInfo(name, image);
@@ -48,7 +48,7 @@ const ManageProfile = () => {
       toast.success("Profile Update Successfully!");
       // console.log(data);
     } catch (err) {
-  // console.log(err);
+      // console.log(err);
     }
 
     setTimeout(() => {
@@ -61,6 +61,15 @@ const ManageProfile = () => {
 
   return (
     <div className=" flex flex-col items-center py-10 ">
+      {role === "admin" && (
+        <section>
+          <h1 className="text-xl font-semibold text-green-800 text-center">
+            Get an overview of all your tours and bookings, all in one
+            convenient place
+          </h1>
+          <States />
+        </section>
+      )}
       {/* Welcome Message */}
       <h1 className="text-2xl font-bold text-green-800">
         Welcome to Your Profile, {user?.displayName}!
@@ -73,7 +82,7 @@ const ManageProfile = () => {
           <img
             src={user?.photoURL}
             alt="User Profile"
-            className="w-28 h-28 rounded-full border-4 border-green-500 mb-5 shadow-sm"
+            className="w-36 h-36 rounded-lg border-4 border-green-500 mb-5 shadow-sm"
           />
           <h2 className="text-2xl font-bold text-gray-700">{user.name}</h2>
           <p className="text-gray-600 italic">{user.email}</p>
@@ -101,11 +110,6 @@ const ManageProfile = () => {
         )}
       </div>
 
-      {role === "admin" && (
-        <section>
-          <States />
-        </section>
-      )}
       {/* Modal */}
       {isModalOpen && (
         <div className="min-h-screen w-full fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center mx-auto">

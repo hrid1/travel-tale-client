@@ -50,7 +50,7 @@ const Dashboard = () => {
             ? "font-bold underline text-green-600 rounded-sm p-2 flex items-center space-x-2"
             : "p-2 border-b-2 rounded flex items-center space-x-2"
         }
-        to="/about"
+        to="/aboutDeveloper"
       >
         <FaInfoCircle className="text-orange-200" />
         <span>About</span>

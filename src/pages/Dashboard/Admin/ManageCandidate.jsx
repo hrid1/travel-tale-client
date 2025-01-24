@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { TbFileCv } from "react-icons/tb";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import UseAxiosPublic from "../../../hooks/UseAxiosPublic";
 
 const ManageCandidate = () => {
- 
+  const axiosPublic = UseAxiosPublic();
   //   load all candidates
   const {
     data: candidates = [],
@@ -18,42 +19,36 @@ const ManageCandidate = () => {
   } = useQuery({
     queryKey: ["candidate"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:5000/users/requested");
+      const { data } = await axiosPublic.get("/users/requested");
       return data;
     },
   });
   // manage accept
   const handleAccept = async (id) => {
     try {
-      const { data } = await axios.patch(
-        `http://localhost:5000/manage/user/${id}`,
-        {
-          role: "guide",
-          status: "Accepted",
-        }
-      );
+      const { data } = await axiosPublic.patch(`/manage/user/${id}`, {
+        role: "guide",
+        status: "Accepted",
+      });
       //   console.log(data);
       toast("👍 Request Accepted!");
       refetch();
     } catch (err) {
-  // console.log(err);
+      // console.log(err);
     }
   };
   //   manage reject
   const handleReject = async (id) => {
     try {
-      const { data } = await axios.patch(
-        `http://localhost:5000/manage/user/${id}`,
-        {
-          role: "tourist",
-          status: "Rejected",
-        }
-      );
-  // console.log(data);
+      const { data } = await axiosPublic.patch(`/manage/user/${id}`, {
+        role: "tourist",
+        status: "Rejected",
+      });
+      // console.log(data);
       toast("👎 Requested Rejected!");
       refetch();
     } catch (err) {
-  // console.log(err);
+      // console.log(err);
     }
   };
 

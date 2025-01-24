@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link, replace, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../../assets/travel-logo.png";
+import logo from "../../../assets/travel-tale.png";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { saveUser } from "../../../api/utilis";
@@ -19,11 +19,11 @@ const Login = () => {
     // user login
     try {
       const result = await loginUser(email, password);
-  // console.log(result);
+      // console.log(result);
       toast.success("Login Successful !");
       navigate(from, { replace: true });
     } catch (err) {
-  // console.log(err);
+      // console.log(err);
       toast(err?.message);
     }
   };
@@ -37,7 +37,7 @@ const Login = () => {
       toast.success("Login Successful!");
       navigate(from, { replace: true });
     } catch (err) {
-  // console.log(err);
+      // console.log(err);
       toast.error(err?.message);
     }
   };
@@ -47,9 +47,9 @@ const Login = () => {
         <div className="flex items-center justify-center min-h-screen">
           <div className="w-full max-w-md m-auto bg-gary-500 rounded p-5 bg-green-100/60 my-4 shadow-md">
             <header>
-              <Link to="/">
-                {" "}
+              <Link className="flex flex-col-reverse gap-0 items-center justify-center w-1/2 mx-auto" to="/">
                 <img className="w-20 mx-auto mb-5" src={logo} />
+                <p className="font-extrabold"> Travel Tale</p>
               </Link>
 
               <h1 className="text-center text-2xl font-semibold">

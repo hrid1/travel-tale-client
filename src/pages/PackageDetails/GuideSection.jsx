@@ -17,7 +17,7 @@ const GuideSection = () => {
   if (isLoading) return <Spiner />;
   return (
     <div>
-      <p>Guides: {guides.length}</p>
+      {/* <p>Guides: {guides.length}</p> */}
       <section className="p-6 bg-">
         <h2 className="text-3xl font-bold text-center mb-8">Our Tour Guides</h2>
         <div className=" gap-8">

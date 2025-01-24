@@ -59,15 +59,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "community",
-        element: (
-          <PrivateRoute>
-            <Community />
-          </PrivateRoute>
-        ),
+        element: <Community />,
       },
       {
         path: "/trips",
-        element: <Trips />,
+        element: (
+          <PrivateRoute>
+            <Trips />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/aboutDeveloper",

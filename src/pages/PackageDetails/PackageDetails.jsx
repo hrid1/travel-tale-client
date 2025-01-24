@@ -85,7 +85,7 @@ const PackageDetails = () => {
   // console.log(data);
       if (data.totalBookings >= 3) {
         setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 3000); 
+        setTimeout(() => setShowConfetti(false), 8000); 
       }
     } catch (err) {
   // console.log(err);

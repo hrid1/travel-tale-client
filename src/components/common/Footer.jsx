@@ -1,4 +1,6 @@
 import React from "react";
+import logo from "../../assets/travel-tale.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -17,13 +19,24 @@ const Footer = () => {
           <a className="link link-hover">Jobs</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Legal</h6>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <h6 className="footer-title">Developer</h6>
+          <Link to="https://www.github.com/hrid1" className="link link-hover">
+            Facebook
+          </Link>
+          <Link to="https://www.linkedin.com/feed/" className="link link-hover">
+            Linkdin
+          </Link>
+          <Link to="https://github.com/hrid1" className="link link-hover">
+            GitHub
+          </Link>
         </nav>
         <form>
-          <h6 className="footer-title">Newsletter</h6>
+          <Link to="/">
+            <div className="flex items-center justify-center">
+              <img className="w-12 h-12" src={logo} alt="" />
+              <h2 className="text-xl font-bold">Travel Tale</h2>
+            </div>
+          </Link>
           <fieldset className="form-control w-80">
             <label className="label">
               <span className="label-text">Enter your email address</span>

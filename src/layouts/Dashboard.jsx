@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import logo from "../assets/travel-tale.png";
 import { FaHome, FaUsers, FaInfoCircle, FaSuitcase } from "react-icons/fa";
+import Footer from "../components/common/Footer";
 
 const Dashboard = () => {
   const [role] = useRole();
@@ -124,6 +125,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <Footer/>
     </div>
   );
 };

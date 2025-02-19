@@ -55,6 +55,16 @@ const Navber = () => {
       >
         Trips
       </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? "font-bold underline text-green-500 0  rounded-sm p-2"
+            : "p-2"
+        }
+        to="/reviews"
+      >
+        Reviews
+      </NavLink>
     </>
   );
 

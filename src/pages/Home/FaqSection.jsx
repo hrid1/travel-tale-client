@@ -2,7 +2,7 @@ import faqimg from "../../assets/tourFaq.webp";
 import TitleInfo from "../../components/common/TitleInfo";
 const FaqSection = () => {
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto">
       <TitleInfo
         title="Frequently Asked Questions"
         subtitle="Find answers to the most common queries about our services."

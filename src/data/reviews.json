@@ -1,0 +1,39 @@
+[
+    {
+      "title": "Amazing Experience!",
+      "description": "Our guide was knowledgeable and friendly, making the tour unforgettable. Highly recommend!",
+      "rating": 5,
+      "author": "John Doe"
+    },
+    {
+      "title": "Informative Tour",
+      "description": "The tour was well-organized, and the guide provided interesting insights about the history and culture.",
+      "rating": 4,
+      "author": "Alice Smith"
+    },
+    {
+      "title": "Great Adventure",
+      "description": "We had a fantastic time exploring new places. The guide was patient and attentive to our needs.",
+      "rating": 5,
+      "author": "Michael Johnson"
+    },
+    {
+      "title": "Not Worth the Money",
+      "description": "The tour didn't meet my expectations. I expected more detailed explanations and activities.",
+      "rating": 2,
+      "author": "Emily Davis"
+    },
+    {
+      "title": "Memorable Experience",
+      "description": "The guide was passionate and made the experience very enjoyable. I would definitely go again!",
+      "rating": 5,
+      "author": "Chris Brown"
+    },
+    {
+      "title": "Could Be Better",
+      "description": "While the tour was good, the timing felt rushed, and we didn't get enough time at some attractions.",
+      "rating": 3,
+      "author": "Sarah Wilson"
+    }
+  ]
+  

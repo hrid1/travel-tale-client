@@ -12,8 +12,8 @@ const Trips = () => {
     },
   });
   return (
-    <div>
-      <div className="text-center my-8">
+    <div className="max-w-screen-xl mx-auto">
+      <div className="text-center  my-8">
         {/* Title */}
         <h1 className="text-3xl font-extrabold text-gray-800">
           Explore Our Tour Packages

@@ -26,6 +26,7 @@ import GuideRoute from "./GuideRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AboutDeveloper from "../pages/AboutDeveloper/AboutDeveloper";
 import TouristRoute from "./TouristRoute";
+import Reviews from "../pages/Reviews/Reviews";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
             <Trips />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/reviews",
+        element: <Reviews />,
       },
       {
         path: "/aboutDeveloper",

@@ -32,7 +32,7 @@ const Banner = () => {
     //   </Swiper>
     // </div>
 
-    <div className="h- [500px]">
+    <div className="h- [500px] max-w-screen-2xl mx-auto">
       <Swiper
         pagination={{
           dynamicBullets: true,

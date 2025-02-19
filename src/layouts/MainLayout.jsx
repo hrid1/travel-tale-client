@@ -7,7 +7,7 @@ const MainLayout = () => {
   return (
     <div className="bg-orange-50">
       <Navber />
-      <div className="max-w-screen-xl mx-auto min-h-[calc(100vh-268px)] ">
+      <div className="max-w -screen-xl mx-auto min-h-[calc(100vh-268px)] ">
         <Outlet />
         <ScrollRestoration />
       </div>

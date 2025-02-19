@@ -6,7 +6,7 @@ import img2 from "../../assets/overview/overimg2.jpg";
 
 const Overview = () => {
   return (
-    <div className=" shadow-lg">
+    <div className="max-w-screen-xl mx-auto shadow-lg">
       <motion.h2
         className="text-3xl font-bold mb-6 text-gray-800 mt-6 px-2 text-center  pt-4"
         initial={{ opacity: 0, y: 50 }}
